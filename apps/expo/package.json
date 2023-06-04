@@ -5,6 +5,7 @@
     "expo-linking": "~4.0.1",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
+    "expo-router": "^1.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.4",
@@ -24,10 +25,8 @@
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+    "ios": "expo run:ios"
   },
-  "main": "index.js",
   "version": "1.0.0",
   "private": true,
   "name": "expo-app"
