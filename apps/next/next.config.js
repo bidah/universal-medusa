@@ -12,6 +12,8 @@ const nextConfig = {
     'react-native',
     'react-native-web',
     'solito',
+    'dripsy',
+    '@dripsy/core',
     'moti',
     'app',
     'react-native-reanimated',
