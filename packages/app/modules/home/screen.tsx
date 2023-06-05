@@ -7,7 +7,7 @@ export function HomeScreen() {
   return (
     <ScrollView className={'bg-white'}>
       {/*<Hero />*/}
-      {/*<FeaturedProducts />*/}
+      <FeaturedProducts />
       {/*<View className="h-[400px] bg-red-400" />*/}
     </ScrollView>
   )
