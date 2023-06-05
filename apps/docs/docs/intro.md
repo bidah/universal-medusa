@@ -27,7 +27,7 @@ You can type this command into Command Prompt, Powershell, Terminal, or any othe
 ## Start projects (mobile, web and Medusa.js backend)
 
 :::note
-`yarn install` aready ran when you created the project
+`yarn install` already ran with the `create-universal-medusa-app` command
 :::
 
 Run Expo client
