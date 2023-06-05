@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import CartDropdown from '../../components/cart-dropdown'
 import {Link as SSLink} from 'app/design'
-import { textXlSemi } from '../../../../design/tailwind/custom-css-classes'
+import { textXlSemi } from 'app/design/tailwind/custom-css-classes'
 
 const Nav = () => {
   const { pathname } = useRouter()
