@@ -1,4 +1,11 @@
 import { View } from 'react-native'
 import { styled } from 'nativewind'
+import {
+  Stack as MobilyStacks,
+  Tiles as MobilyTiles,
+  Columns as MobilyColumns,
+} from '@mobily/stacks'
 
-export const Row = styled(View, "flex-row")
+export const Stack = styled(MobilyStacks)
+export const Columns = styled(MobilyColumns)
+export const Tiles = styled(MobilyTiles)
