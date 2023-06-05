@@ -69,9 +69,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
       </View>
       <View className="flex justify-end">
         <Link href={`/order/details/${order.id}`}>
-          <a>
             <Button variant="secondary">See details</Button>
-          </a>
         </Link>
       </View>
     </View>

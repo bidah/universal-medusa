@@ -1,3 +1,5 @@
-import { HomeScreen } from 'app/features/home/screen'
+// import { HomeScreen } from 'app/modules/home/screen'
 
-export default HomeScreen
+export default () => {
+    return null
+}

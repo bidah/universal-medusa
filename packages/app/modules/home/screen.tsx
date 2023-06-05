@@ -1,14 +1,13 @@
 import { View, ScrollView, Stack } from 'app/design'
 
-import { MotiLink } from 'solito/moti'
 import Hero from './components/hero'
 import FeaturedProducts from 'app/modules/home/components/featured-products'
 
 export function HomeScreen() {
   return (
     <ScrollView className={'bg-white'}>
-      <Hero />
-      <FeaturedProducts />
+      {/*<Hero />*/}
+      {/*<FeaturedProducts />*/}
       {/*<View className="h-[400px] bg-red-400" />*/}
     </ScrollView>
   )

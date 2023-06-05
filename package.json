@@ -16,11 +16,13 @@
   },
   "scripts": {
     "native": "cd apps/expo && yarn start",
-    "web": "cd apps/next && yarn next"
+    "web": "cd apps/next && yarn next",
+    "medusa": "cd apps/medusa-store && yarn start"
   },
   "resolutions": {
     "metro": "^0.73.1",
-    "metro-resolver": "^0.73.1"
+    "metro-resolver": "^0.73.1",
+    "react-native-svg": "13.4.0"
   },
   "nohoist": [
     "**/expo-router",

@@ -19,6 +19,9 @@ const nextConfig = {
     'react-native-reanimated',
     'nativewind',
     'react-native-gesture-handler',
+    '@mobily/stacks',
+    'react-native-svg',
+    'expo-linear-gradient',
   ],
 }
 

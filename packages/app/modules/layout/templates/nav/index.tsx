@@ -41,6 +41,8 @@ const Nav = () => {
 
   const { toggle } = useMobileMenu()
 
+  return null
+
   return (
     <div
       className={clsx('group sticky inset-x-0 top-0 z-50', {
@@ -74,7 +76,7 @@ const Nav = () => {
 
           <div className="flex h-full items-center">
             <Link href="/">
-              <a className={`${textXlSemi} uppercase`}>Acme</a>
+              <Text className={`${textXlSemi} uppercase`}>Acme</Text>
             </Link>
           </div>
 
@@ -82,7 +84,7 @@ const Nav = () => {
             <div className="small:flex hidden h-full items-center gap-x-6">
               {/*{process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}*/}
               <Link href="/account">
-                <a>Account</a>
+                Account
               </Link>
             </div>
             <CartDropdown />
