@@ -4,29 +4,14 @@ sidebar_position: 4
 
 # App Clips 
 
-## Default Setup
-We pass a `seo` object from `getStaticProps` to `pages/products/[handle].tsx` to enable SEO discoverability on all products.
+Leverage ecom discoverability with prospect user without even installing your mobile app.
 
+By exposing your consumer to a bite-sized version of your app you encourage full-version downloads of it which extends user reach out by future push notifications and other native mobile app features.
 
-```jsx
-// pages/products/[handle].tsx
-
-import {fetchProduct} from "app/lib/hooks/use-product";
-
-export default ProductScreen
-
-export const getStaticProps = async ({ params }) => {
-    const product = await fetchProduct(params.slug)
-    return {
-        props: {
-            // this will get passed to pageProps
-            seo: { title: product.title, description: product.description },
-        },
-        revalidate: 1,
-    }
-}
-```
+:::note
+Under development
+:::
 
 ## Extend Usage
 
-To extend setup please refer to the documentation on the [Next-seo repo](https://github.com/garmeeh/next-seo#readme)
+To extend setup please refer to the documentation on the [react-native-app-clip repo](https://github.com/bndkt/react-native-app-clip)
