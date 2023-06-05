@@ -33,7 +33,7 @@ You can type this command into Command Prompt, Powershell, Terminal, or any othe
 Run Expo client
 ```bash
 # first time only you need to create your dev client
-yarn eas build --profile development-simulator --platform ios
+eas build --profile development-simulator --platform ios
 
 # then start your dev client
 yarn native
