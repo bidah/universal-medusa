@@ -7,6 +7,10 @@ slug: /
 
 Build cross platforms ecom apps that get you the best of web and native mobile using Next.js and Expo. You get a development setup with shared tailwind styles, unified navigation,  shared screens and components with all the medusa.js headless modules at your disposal
 
+## Motivation
+When developing robust ecommerce your app product tend to ship slower and slower when it grows in functionality and team size. That's always the case on a thriving project. With that in mind Universal medusa empowers what Medusa.js already gives you. More dev tooling to power up your ecom development with easy and sacability in mind.
+
+
 
 ## Getting Started
 
