@@ -18,7 +18,7 @@
     "native": "cd apps/expo && yarn start",
     "web": "cd apps/next && yarn next",
     "medusa": "cd apps/medusa-store && yarn start",
-    "docs": "cd apps/website && yarn start",
+    "docs": "cd apps/docs && yarn start",
     "clean:node-modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
   "resolutions": {
