@@ -1,7 +1,7 @@
 import { medusaClient } from '../config'
 import { useQuery } from 'react-query'
 
-const fetchProduct = async (handle: string) => {
+export const fetchProduct = async (handle: string) => {
   return await medusaClient.products
     .list({ handle })
     .then(({ products }) => products[0])
