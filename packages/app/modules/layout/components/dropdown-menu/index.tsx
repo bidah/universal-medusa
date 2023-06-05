@@ -29,8 +29,7 @@ const DropdownMenu = () => {
       <div className="flex h-full items-center">
         <Popover className="flex h-full">
           <>
-            <Link href="/shop" passHref>
-              <a className="relative flex h-full">
+            <Link href="/shop" passHref className="relative flex h-full">
                 <Popover.Button
                   className={clsx(
                     'relative flex h-full items-center transition-all duration-200 ease-out'
@@ -39,7 +38,6 @@ const DropdownMenu = () => {
                 >
                   Store
                 </Popover.Button>
-              </a>
             </Link>
 
             <Transition
@@ -75,10 +73,9 @@ const DropdownMenu = () => {
                                     <div key={collection.id} className="pb-3">
                                       <Link
                                         href={`/collections/${collection.id}`}
+                                        onClick={() => setOpen(false)}
                                       >
-                                        <a onClick={() => setOpen(false)}>
                                           {collection.title}
-                                        </a>
                                       </Link>
                                     </div>
                                   )

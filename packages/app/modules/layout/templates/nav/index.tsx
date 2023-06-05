@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import CartDropdown from '../../components/cart-dropdown'
+import {Link as SSLink} from 'app/design'
 import { textXlSemi } from '../../../../design/tailwind/custom-css-classes'
 
 const Nav = () => {
@@ -40,8 +41,6 @@ const Nav = () => {
   }, [pathname])
 
   const { toggle } = useMobileMenu()
-
-  return null
 
   return (
     <div
@@ -75,9 +74,9 @@ const Nav = () => {
           </div>
 
           <div className="flex h-full items-center">
-            <Link href="/">
-              <Text className={`${textXlSemi} uppercase`}>Acme</Text>
-            </Link>
+            <SSLink href="/" className={`${textXlSemi} uppercase`}>
+              Acme
+            </SSLink>
           </div>
 
           <div className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6">
