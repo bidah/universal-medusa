@@ -24,7 +24,9 @@
   "resolutions": {
     "metro": "^0.73.1",
     "metro-resolver": "^0.73.1",
-    "react-native-svg": "13.4.0"
+    "react-native-svg": "13.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "nohoist": [
     "**/expo-router",
