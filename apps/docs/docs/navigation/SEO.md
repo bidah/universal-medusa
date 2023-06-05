@@ -11,6 +11,8 @@ We pass a `seo` object from `getStaticProps` to `pages/products/[handle].tsx` to
 ```jsx
 // pages/products/[handle].tsx
 
+import {fetchProduct} from "app/lib/hooks/use-product";
+
 export default ProductScreen
 
 export const getStaticProps = async ({ params }) => {
