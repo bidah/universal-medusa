@@ -8,8 +8,7 @@ sidebar_position: 4
 We pass a `seo` object from `getStaticProps` to `pages/products/[handle].tsx` to enable SEO discoverability on all products.
 
 
-```jsx
-// pages/products/[handle].tsx
+```jsx title=pages/products/[handle].tsx
 
 import {fetchProduct} from "app/lib/hooks/use-product";
 
