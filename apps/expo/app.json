@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "solito-expo-router",
-    "slug": "solito-expo-router",
+    "name": "universal-medusa-app",
+    "slug": "universal-medusa-app",
     "version": "1.0.0",
     "scheme": "universal-medusa-scheme",
     "platforms": [
@@ -9,7 +9,7 @@
       "android"
     ],
     "ios": {
-      "bundleIdentifier": "com.solito.expo-router"
+      "bundleIdentifier": "com.universalmedusaapp"
     },
     "extra": {
       "eas": {
