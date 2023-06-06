@@ -58,9 +58,4 @@ yarn medusa:seed
 yarn medusa
 ```
 
-Run the medusa backend
-
-```bash
-yarn medusa
-```
 
