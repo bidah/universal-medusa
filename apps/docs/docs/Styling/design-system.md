@@ -16,7 +16,7 @@ You have 5 categories available. Each with one or more components within which y
 - view.tsx
 
 
-### Build on top or extend
+### Extend
 
 You can build on top of current primitives. All components are written using the Nativewind `styled()` higher-order component.
 
