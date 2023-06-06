@@ -3,7 +3,7 @@
     "name": "solito-expo-router",
     "slug": "solito-expo-router",
     "version": "1.0.0",
-    "scheme": "solito-expo-router",
+    "scheme": "universal-medusa-scheme",
     "platforms": [
       "ios",
       "android"
