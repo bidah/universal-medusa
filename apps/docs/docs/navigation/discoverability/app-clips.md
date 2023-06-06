@@ -9,7 +9,7 @@ Feature not implemented on current version. Under development
 :::
 
 
-Leverage ecom discoverability with prospect user without even installing your mobile app.
+Leverage discoverability of app with prospect users by not needing to install your mobile app.
 
 By exposing your consumer to a bite-sized version of your app you encourage full-version downloads of it which extends user reach out by future push notifications and other native mobile app features.
 
