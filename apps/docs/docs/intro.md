@@ -35,16 +35,39 @@ You can type this command into Command Prompt, Powershell, Terminal, or any othe
 `yarn install` already ran with the `create-universal-medusa-app` command
 :::
 
-Run Expo client
-```bash
-# first time only you need to create your dev client
-eas build --profile development-simulator --platform ios
+### Run Expo client
 
-# then start your dev client
+#### Install the latest EAS CLI
+EAS CLI is the command-line app that you will use to interact with EAS services from your terminal. To install it, run the command:
+
+```bash
+npm install -g eas-cli
+```
+
+#### Login to your expo account
+```bash
+eas login
+```
+
+#### Configure project for eas builds
+Create your dev client to be run on your simulator
+
+:::note
+You need to rerun build whenever you add native dependencies to your `expo` project
+:::
+
+```bash
+eas build --profile development-simulator --platform ios
+```
+
+then start your dev client
+```bash
 yarn native
 ```
 
-Run Next.js web app
+-----
+
+### Run Next.js web app
 
 ```bash
 yarn web
