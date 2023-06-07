@@ -24,7 +24,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Acme</title>
         <meta
           name="description"
           content="Build cross platforms ecom apps with medusa.js that get you the best of web and native mobile using Next.js and Expo"

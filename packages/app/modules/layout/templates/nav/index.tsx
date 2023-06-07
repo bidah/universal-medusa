@@ -73,11 +73,11 @@ const Nav = () => {
             </div>
           </div>
 
-          <div className="flex h-full items-center">
-            <SSLink href="/" className={`${textXlSemi} uppercase`}>
-              Acme
-            </SSLink>
-          </div>
+          {/*<div className="flex h-full items-center">*/}
+          {/*  <SSLink href="/" className={`${textXlSemi} uppercase`}>*/}
+          {/*    Acme*/}
+          {/*  </SSLink>*/}
+          {/*</div>*/}
 
           <div className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6">
             <div className="small:flex hidden h-full items-center gap-x-6">
