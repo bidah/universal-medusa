@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Acme</title>
         <meta
           name="description"
-          content="Expo + Next.js with Solito. By Fernando Rojo."
+          content="Build cross platforms ecom apps with medusa.js that get you the best of web and native mobile using Next.js and Expo"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

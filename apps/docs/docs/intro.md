@@ -5,22 +5,27 @@ slug: /
 
 # Universal ecommerce development
 
-Build cross platforms ecom apps that get you the best of web and native mobile using Next.js and Expo.
-You get a development setup with shared tailwind styles, screens and components,unified navigation plus all the medusa.js headless modules at your disposal.
+Build cross platforms e com apps with [Medusa.js](http://medusajs.com) that gets you the best of web and native mobile using [Next.js](http://nextjs.org) and [Expo](https://expo.dev).
+
+You get a development setup with shared screens, components,tailwind styles using [Nativewind](https://nativewind.dev), unified navigation with [Solito](https://solito.dev) and [Expo Router](https://expo.github.io/router/docs/). 
 
 ## Motivation
 When developing robust ecommerce your app product tend to ship slower and slower when it grows in functionality and team size. That's always the case on a thriving project. With that in mind Universal medusa empowers what Medusa.js already gives you. More dev tooling to power up your ecom development with easy and sacability in mind.
 
-
-
 ## Getting Started
-
-Get started by running the following to create a new project with a base monorepo structure ready to go.
+Get started by running the following to create a new project with a starter kit that consists of a:
+- base monorepo structure ready to go.
+- base medusa frontend starter (port of medusa.js next.js starter)
+- base medusa backend starter
 
 ```bash
 npx create-universal-medusa-app my-app
 ```
 
+:::note
+The starter is a port of Medusa.js Next.js starter. So you get all the same features out of the box.
+You get a Expo, Next and default medusa backend in a monorepo
+:::
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 

@@ -7528,6 +7528,7 @@ __metadata:
     react-intersection-observer: ^9.4.1
     react-native-intersection-observer: ^0.0.9
     react-native-radio-button: ^2.0.1
+    react-native-reanimated: 2.9.1
     react-native-svg: 13.4.0
     react-query: ^3.39.2
     solito: 3.0.0
@@ -12322,7 +12323,7 @@ __metadata:
     react-native-gesture-handler: ~2.9.0
     react-native-get-random-values: ~1.8.0
     react-native-heroicons: ^3.2.0
-    react-native-reanimated: 3.0.2
+    react-native-reanimated: 2.9.1
     react-native-safe-area-context: 4.5.0
     react-native-screens: ~3.20.0
     react-native-svg: 13.4.0

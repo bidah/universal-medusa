@@ -9,7 +9,7 @@
       "android"
     ],
     "ios": {
-      "bundleIdentifier": "com.universalmedusaapp"
+      "bundleIdentifier": "com.medusa.universal"
     },
     "extra": {
       "eas": {
