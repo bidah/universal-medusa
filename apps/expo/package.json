@@ -39,6 +39,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "version": "1.0.0",
   "private": true,
   "name": "expo-app"
