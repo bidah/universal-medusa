@@ -7521,7 +7521,6 @@ __metadata:
     react-intersection-observer: ^9.4.1
     react-native-intersection-observer: ^0.0.9
     react-native-radio-button: ^2.0.1
-    react-native-reanimated: 3.1.0
     react-native-svg: 13.4.0
     react-query: ^3.39.2
     solito: 3.0.0
@@ -10057,13 +10056,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"convert-source-map@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "convert-source-map@npm:2.0.0"
-  checksum: 63ae9933be5a2b8d4509daca5124e20c14d023c820258e484e32dc324d34c2754e71297c94a05784064ad27615037ef677e3f0c00469fb55f409d2bb21261035
-  languageName: node
-  linkType: hard
-
 "cookie-parser@npm:^1.4.6":
   version: 1.4.6
   resolution: "cookie-parser@npm:1.4.6"
@@ -12323,7 +12315,7 @@ __metadata:
     react-native-gesture-handler: ~2.9.0
     react-native-get-random-values: ~1.8.0
     react-native-heroicons: ^3.2.0
-    react-native-reanimated: 3.1.0
+    react-native-reanimated: 3.0.2
     react-native-safe-area-context: 4.5.0
     react-native-screens: ~3.20.0
     react-native-svg: 13.4.0
@@ -17442,6 +17434,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: da27515dc5230eb1140ba65ff8de3613649620e8656b19a6270afe4866b7bd461d9ba2ac8a48dcc57f7adac4ee80e1de9f965d89d4d81a0ad52bb3eec2609644
+  languageName: node
+  linkType: hard
+
 "lodash.memoize@npm:4.x, lodash.memoize@npm:^4.1.2":
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
@@ -22386,24 +22385,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.1.0":
-  version: 3.1.0
-  resolution: "react-native-reanimated@npm:3.1.0"
+"react-native-reanimated@npm:3.0.2":
+  version: 3.0.2
+  resolution: "react-native-reanimated@npm:3.0.2"
   dependencies:
     "@babel/plugin-transform-object-assign": ^7.16.7
     "@babel/preset-typescript": ^7.16.7
-    convert-source-map: ^2.0.0
+    convert-source-map: ^1.7.0
     invariant: ^2.2.4
+    lodash.isequal: ^4.5.0
+    setimmediate: ^1.0.5
+    string-hash-64: ^1.0.3
   peerDependencies:
     "@babel/core": ^7.0.0-0
-    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.0.0-0
-    "@babel/plugin-proposal-optional-chaining": ^7.0.0-0
-    "@babel/plugin-transform-arrow-functions": ^7.0.0-0
-    "@babel/plugin-transform-shorthand-properties": ^7.0.0-0
-    "@babel/plugin-transform-template-literals": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 28279642056c7b214649ff14d3c9f1e914c9dd3dd74afc734fc10d1af088a2c3b0e187751e2713d54fc0a9916c394068b29aec51e754b51625a4179f10e38bcd
+  checksum: 7635d6d490eecdf74d3b3560e0696df14c8528f58b4c79d680bb623053e6a13e51e05f62aa9d40e1d53e9b2c90d67ac77ff1f4128400f14ab4a524ef3dec036b
   languageName: node
   linkType: hard
 
@@ -24751,6 +24748,13 @@ __metadata:
   version: 2.0.0
   resolution: "strict-uri-encode@npm:2.0.0"
   checksum: eaac4cf978b6fbd480f1092cab8b233c9b949bcabfc9b598dd79a758f7243c28765ef7639c876fa72940dac687181b35486ea01ff7df3e65ce3848c64822c581
+  languageName: node
+  linkType: hard
+
+"string-hash-64@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "string-hash-64@npm:1.0.3"
+  checksum: 79de8431b4fa3e85a2429cd52a34f7948221ff167b7a094e05d6bcfd0173474b232e0c9845c96f74b0d7b6b0c8bbe2c3532a4cacb21635293ef0cf3cc8e77f06
   languageName: node
   linkType: hard
 
