@@ -65,7 +65,7 @@ const CartDropdown = () => {
                                   <Link
                                     href={`/products/${item.variant.product.handle}`}
                                   >
-                                    <a>{item.title}</a>
+                                    {item.title}
                                   </Link>
                                 </h3>
                                 <LineItemOptions variant={item.variant} />
@@ -111,9 +111,7 @@ const CartDropdown = () => {
                     </span>
                   </div>
                   <Link href="/cart" passHref>
-                    <a>
                       <Button>Go to bag</Button>
-                    </a>
                   </Link>
                 </div>
               </>
@@ -126,10 +124,8 @@ const CartDropdown = () => {
                   <span>Your shopping bag is empty.</span>
                   <div>
                     <Link href="/store">
-                      <a>
                         <span className="sr-only">Go to all products page</span>
                         <Button onClick={close}>Explore products</Button>
-                      </a>
                     </Link>
                   </div>
                 </div>
