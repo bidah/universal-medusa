@@ -1,4 +1,5 @@
 import 'raf/polyfill'
+import "setimmediate"
 
 const fixReanimatedIssue = () => {
   // FIXME remove this once this reanimated fix gets released
