@@ -14,7 +14,7 @@ const ProfileTemplate = () => {
   }
 
   return (
-    <View className="w-full">
+    <View className="w-full p-2">
       <View className="mb-8 flex flex-col gap-y-4">
         <Text className="text-2xl-semi">Profile</Text>
         <Text className="text-base-regular">
