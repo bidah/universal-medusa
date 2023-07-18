@@ -93,8 +93,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )}
                     ref={inputRef}
                   />
-                  <View style={{ top: 0, position: 'absolute' }}>
+                  <View style={{ top: 0, position: 'absolute' }} >
                     <MotiPressable
+                      onPress={() => {
+                        inputRef.current?.focus()
+                        setIsFocused(true)
+                      }}
                       onFocus={() => {
                         inputRef.current?.focus()
                         setIsFocused(true)
