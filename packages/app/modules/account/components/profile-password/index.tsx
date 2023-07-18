@@ -84,7 +84,7 @@ const ProfileName: React.FC<MyInformationProps> = ({ customer }) => {
         handleSubmit={handleSubmit(updatePassword)}
         label="Password"
         currentInfo={
-          <Text>The password is not shown for security reasons</Text>
+          <Text>Password hidden for security reasons</Text>
         }
         isLoading={isLoading}
         isSuccess={isSuccess}
