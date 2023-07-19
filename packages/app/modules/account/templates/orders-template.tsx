@@ -7,10 +7,10 @@ import {
 
 const OrdersTemplate = () => {
   return (
-    <View className="w-full">
+    <View className="mx-2 w-full">
       <View className="mb-8 flex flex-col gap-y-4">
-        <Text className={`${text2xlSemi}`}>Orders</Text>
-        <Text className={`${textBaseRegular}`}>
+        <Text className={`${text2xlSemi} ios:hidden `}>Orders</Text>
+        <Text className={`${textBaseRegular} ios:pt-2`}>
           View your previous orders and their status. You can also create
           returns or exchanges for your orders if needed.
         </Text>

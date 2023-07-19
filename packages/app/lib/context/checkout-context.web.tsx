@@ -21,7 +21,6 @@ import { useRouter } from 'solito/router'
 import React, { createContext, useContext, useEffect, useMemo } from 'react'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { useStore } from './store-context'
-import { useNavigation } from 'expo-router'
 import { Platform } from 'react-native'
 
 type AddressValues = {
@@ -102,7 +101,6 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
 
   const { resetCart, setRegion } = useStore()
   const { push, replace } = useRouter()
-  const navigation = useNavigation()
 
   const editAddresses = useToggleState()
   const sameAsBilling = useToggleState(
@@ -318,8 +316,7 @@ export const CheckoutProvider = ({ children }: CheckoutProviderProps) => {
     complete(undefined, {
       onSuccess: ({ data }) => {
         resetCart()
-        navigation.popToTop()
-        replace(`/order/confirmed/${data.id}`)
+        push(`/order/confirmed/${data.id}`)
       },
     })
   }

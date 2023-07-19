@@ -3,8 +3,12 @@ import Button from 'app/modules/common/components/button'
 import Thumbnail from 'app/modules/products/components/thumbnail'
 import { formatAmount } from 'medusa-react'
 import { useMemo } from 'react'
-import { View, Text, Link } from 'app/design'
+import { View, Text, Link, Columns } from 'app/design'
 import { useRouter } from 'solito/router'
+import {
+  textLargeSemi,
+  textSmallRegular,
+} from 'app/design/tailwind/custom-css-classes'
 
 type OrderCardProps = {
   order: Omit<Order, 'beforeInsert'>
@@ -17,17 +21,19 @@ const OrderCard = ({ order }: OrderCardProps) => {
     }, 0)
   }, [order])
 
-    const router = useRouter()
+  const router = useRouter()
   const numberOfProducts = useMemo(() => {
     return order.items.length
   }, [order])
 
   return (
     <View className="flex flex-col bg-white">
-      <Text className="text-large-semi mb-1 uppercase">
+      <Text className={`${textLargeSemi} mb-1 uppercase`}>
         #{order.display_id}
       </Text>
-      <View className="text-small-regular flex items-center divide-x divide-gray-200 text-gray-700">
+      <View
+        className={`${textSmallRegular} flex flex-row items-center divide-x divide-gray-200 text-gray-700`}
+      >
         <Text className="pr-2">
           {new Date(order.created_at).toDateString()}
         </Text>
@@ -42,7 +48,8 @@ const OrderCard = ({ order }: OrderCardProps) => {
           numberOfLines > 1 ? 'items' : 'item'
         }`}</Text>
       </View>
-      <View className="small:grid-cols-4 my-4 grid grid-cols-2 gap-4">
+      {/*<Columns className="small:grid-cols-4 my-4 grid grid-cols-2 gap-4">*/}
+      <Columns className="my-4 gap-4">
         {order.items.slice(0, 3).map((i) => {
           return (
             <View key={i.id} className="flex flex-col gap-y-2">
@@ -67,9 +74,14 @@ const OrderCard = ({ order }: OrderCardProps) => {
             <Text className="text-small-regular text-gray-700">more</Text>
           </View>
         )}
-      </View>
+      </Columns>
       <View className="flex justify-end">
-        <Button variant="secondary" onPress={() => router.push(`/order/details/${order.id}`)}>See details</Button>
+        <Button
+          variant="secondary"
+          onPress={() => router.push(`/order/details/${order.id}`)}
+        >
+          See details
+        </Button>
       </View>
     </View>
   )
