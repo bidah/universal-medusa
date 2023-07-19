@@ -15,7 +15,7 @@ const AccountNav = () => {
   console.log('route:', route)
   return (
     <View>
-      <View className="small:hidden">
+      <View className="small:hidden ios:hidden">
         {route !== '/account' && (
           <Link href="/account">
             <View className="text-small-regular flex items-center gap-x-2 py-2">
