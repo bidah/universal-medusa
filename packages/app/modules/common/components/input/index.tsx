@@ -61,7 +61,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             render={({ field: { value, onChange, onBlur } }) => {
               outerOnBlur = onBlur
               return (
-                <View>
+                <View className={"relative"}>
                   <TextInput
                     {...props}
                     secureTextEntry={inputType === 'password'}
@@ -93,11 +93,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )}
                     ref={inputRef}
                   />
-                  <View style={{ top: 0, position: 'absolute' }} >
+                  <View style={{ top: 0, position: 'absolute'}} >
                     <MotiPressable
                       onPress={() => {
-                        inputRef.current?.focus()
-                        setIsFocused(true)
+                        // inputRef.current?.focus()
+                        // setIsFocused(true)
                       }}
                       onFocus={() => {
                         inputRef.current?.focus()
