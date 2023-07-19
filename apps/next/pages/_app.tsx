@@ -1,5 +1,5 @@
 import 'raf/polyfill'
-
+import "setimmediate"
 const fixReanimatedIssue = () => {
   // FIXME remove this once this reanimated fix gets released
   // https://github.com/software-mansion/react-native-reanimated/issues/3355
