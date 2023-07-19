@@ -37,7 +37,8 @@
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "postinstall": "cd ../.. && yarn patch-package"
   },
   "version": "1.0.0",
   "private": true,
