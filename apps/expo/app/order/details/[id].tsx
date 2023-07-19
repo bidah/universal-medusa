@@ -1,13 +1,14 @@
-import { OrderConfirmedScreen } from 'app/modules/order/order-confirmed-screen'
 import { Stack } from 'expo-router'
-
+import { OrderDetailsScreen } from 'app/modules/order/order-details-screen'
 export default function ConfirmedPage() {
-    return <>
-        <Stack.Screen
-            options={{
-                title: `Order Details`,
-            }}
-        />
-     <OrderConfirmedScreen />
+  return (
+    <>
+      <Stack.Screen
+        options={{
+          title: `Order Details:`,
+        }}
+      />
+      <OrderDetailsScreen />
     </>
+  )
 }

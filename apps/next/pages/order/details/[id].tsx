@@ -1,3 +1,3 @@
-import { OrderConfirmedScreen } from 'app/modules/order/order-confirmed-screen'
+import { OrderDetailsScreen } from 'app/modules/order/order-details-screen'
 
-export default OrderConfirmedScreen
+export default OrderDetailsScreen
