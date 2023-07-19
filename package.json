@@ -34,7 +34,9 @@
     "**/expo-router",
     "**/expo-router/**",
     "**/react-native-reanimated",
-    "**/react-native-reanimated/**"
+    "**/react-native-reanimated/**",
+    "**/packages/**/react-native-reanimated",
+    "**/packages/**/react-native-reanimated/**"
   ],
   "packageManager": "yarn@3.4.1"
 }
