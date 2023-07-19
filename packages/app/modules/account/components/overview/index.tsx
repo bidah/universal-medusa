@@ -23,13 +23,13 @@ const Overview = ({ orders, customer }: OverviewProps) => {
     <>
       <View>
         <View className="small:hidden">
-          <Text className={`${textXlSemi}  mb-4 px-8 `}>
+          <Text className={`${textXlSemi}  mb-4 px-2 `}>
             Hello {customer?.first_name}
           </Text>
           <View className={textBaseRegular}>
             <View>
               <Link href="/account/profile">
-                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-8 py-4">
+                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-2 py-4">
                   <View className="flex flex-row items-center gap-x-2">
                     <User size={16} />
                     <Text>Profile</Text>
@@ -38,7 +38,7 @@ const Overview = ({ orders, customer }: OverviewProps) => {
                 </View>
               </Link>
               <Link href="/account/addresses">
-                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-8 py-4">
+                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-2 py-4">
                   <View className="flex flex-row items-center gap-x-2">
                     <MapPin size={16} />
                     <Text>Addresses</Text>
@@ -47,7 +47,7 @@ const Overview = ({ orders, customer }: OverviewProps) => {
                 </View>
               </Link>
               <Link href="/account/orders">
-                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-8 py-4">
+                <View className="flex flex-row items-center justify-between border-b border-gray-200 px-2 py-4">
                   <View className="flex flex-row items-center gap-x-2">
                     <Package size={16} />
                     <Text>Orders</Text>
