@@ -14,7 +14,6 @@ export function OrderConfirmedScreen() {
 
     const [id] = useParam('id', { initial: ''})
 
-    console.log('id', id)
     const { isSuccess, data, isLoading, isError } = useQuery(
         ["get_order_confirmed", id],
         () => fetchOrder(id),

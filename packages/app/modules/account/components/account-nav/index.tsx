@@ -12,7 +12,6 @@ const AccountNav = () => {
   const route = useUniversalPathname()
   const { handleLogout } = useAccount()
 
-  console.log('route:', route)
   return (
     <View>
       <View className="small:hidden ios:hidden">

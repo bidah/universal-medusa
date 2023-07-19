@@ -1,11 +1,12 @@
 import { Order } from "@medusajs/medusa"
-import Help from "@modules/order/components/help"
-import Items from "@modules/order/components/items"
-import OrderDetails from "@modules/order/components/order-details"
-import OrderSummary from "@modules/order/components/order-summary"
-import PaymentDetails from "@modules/order/components/payment-details"
-import ShippingDetails from "@modules/order/components/shipping-details"
+import Help from "app/modules/order/components/help"
+import Items from "app/modules/order/components/items"
+import OrderDetails from "app/modules/order/components/order-details"
+import OrderSummary from "app/modules/order/components/order-summary"
+import PaymentDetails from "app/modules/order/components/payment-details"
+import ShippingDetails from "app/modules/order/components/shipping-details"
 import React from "react"
+import {View, Pressable, Text} from 'app/design'
 
 type OrderDetailsTemplateProps = {
   order: Order
@@ -15,16 +16,16 @@ const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({
   order,
 }) => {
   return (
-    <div className="bg-gray-50 py-6 min-h-[calc(100vh-64px)]">
-      <div className="content-container flex justify-center">
-        <div className="max-w-4xl h-full bg-white w-full">
+    <View className="bg-gray-50 py-6 min-h-[calc(100vh-64px)]">
+      <View className="content-container flex justify-center">
+        <View className="max-w-4xl h-full bg-white w-full">
           <OrderDetails order={order} showStatus />
           <Items
             items={order.items}
             region={order.region}
             cartId={order.cart_id}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-10 border-b border-gray-200">
+          <View className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-10 border-b border-gray-200">
             <PaymentDetails
               payments={order.payments}
               paymentStatus={order.payment_status}
@@ -33,14 +34,14 @@ const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({
               shippingMethods={order.shipping_methods}
               address={order.shipping_address}
             />
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-10">
+          </View>
+          <View className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-10">
             <Help />
             <OrderSummary order={order} />
-          </div>
-        </div>
-      </div>
-    </div>
+          </View>
+        </View>
+      </View>
+    </View>
   )
 }
 

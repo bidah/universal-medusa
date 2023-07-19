@@ -16,7 +16,6 @@ type OrderCompletedTemplateProps = {
 const OrderCompletedTemplate: React.FC<OrderCompletedTemplateProps> = ({
   order,
 }) => {
-  console.log('order', order)
   return (
     <View className="bg-gray-50 py-6 min-h-[calc(100vh-64px)]">
       <View className="content-container flex flex-row justify-center">
