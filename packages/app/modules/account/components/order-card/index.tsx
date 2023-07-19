@@ -2,9 +2,9 @@ import { Order } from '@medusajs/medusa'
 import Button from 'app/modules/common/components/button'
 import Thumbnail from 'app/modules/products/components/thumbnail'
 import { formatAmount } from 'medusa-react'
-import Link from 'next/link'
 import { useMemo } from 'react'
-import { View, Text } from 'app/design'
+import { View, Text, Link } from 'app/design'
+import { useRouter } from 'solito/router'
 
 type OrderCardProps = {
   order: Omit<Order, 'beforeInsert'>
@@ -17,15 +17,16 @@ const OrderCard = ({ order }: OrderCardProps) => {
     }, 0)
   }, [order])
 
+    const router = useRouter()
   const numberOfProducts = useMemo(() => {
     return order.items.length
   }, [order])
 
   return (
     <View className="flex flex-col bg-white">
-      <View className="text-large-semi mb-1 uppercase">
+      <Text className="text-large-semi mb-1 uppercase">
         #{order.display_id}
-      </View>
+      </Text>
       <View className="text-small-regular flex items-center divide-x divide-gray-200 text-gray-700">
         <Text className="pr-2">
           {new Date(order.created_at).toDateString()}
@@ -68,9 +69,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
         )}
       </View>
       <View className="flex justify-end">
-        <Link href={`/order/details/${order.id}`}>
-            <Button variant="secondary">See details</Button>
-        </Link>
+        <Button variant="secondary" onPress={() => router.push(`/order/details/${order.id}`)}>See details</Button>
       </View>
     </View>
   )
