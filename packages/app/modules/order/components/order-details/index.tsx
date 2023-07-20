@@ -20,7 +20,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
   }
 
   return (
-    <View className="large:py-10 border-b border-gray-200 px-2">
+    <View className="large:py-10 ios:mb-2 border-b border-gray-200 px-2">
       <Text className="text-small-regular uppercase text-gray-700">
         Thank you, your order was successfully placed
       </Text>
@@ -29,7 +29,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
       </Text>
       <Text>{order.id.split('order_')[1]}</Text>
       <View
-        className={`flex flex-row items-center text-gray-700 ${textSmallRegular} mt-4 gap-x-4 `}
+        className={`flex flex-row items-center text-gray-700 ${textSmallRegular} ios:mb-6 mt-4 gap-x-4 `}
       >
         <Text>{new Date(order.created_at).toDateString()}</Text>
         <Text>{`${items} ${items !== 1 ? 'items' : 'item'}`}</Text>
