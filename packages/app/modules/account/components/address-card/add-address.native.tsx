@@ -16,7 +16,10 @@ import BottomSheet, {
   BottomSheetModal,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet'
-import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
+import {
+  textBaseSemi,
+  textSmallRegular,
+} from '../../../../design/tailwind/custom-css-classes'
 
 type FormValues = {
   first_name: string
@@ -105,7 +108,7 @@ const AddAddressNative: React.FC = () => {
           className="web:min-h-[220px] full m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
           onPress={handlePresentModalPress}
         >
-          <Text className="text-base-semi">New address</Text>
+          <Text className={` ${textBaseSemi} `}>New address</Text>
           <Plus size={24} />
         </Pressable>
       </Row>

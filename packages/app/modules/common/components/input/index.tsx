@@ -9,17 +9,18 @@ import { MotiView, Text as MotiText } from 'moti'
 import { MotiPressable } from 'moti/interactions'
 import colors from 'tailwindcss/colors'
 import { textXsmallRegular } from '../../../../design/tailwind/custom-css-classes'
+import { TextInputProps } from 'react-native'
 
-type InputProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'placeholder'
-> & {
+type ExtraInputProps = {
   label: string
   errors?: Record<string, unknown>
   touched?: Record<string, unknown>
   name: string
-  isSubmitting?: boolean
 }
+
+type InputProps =
+  | (TextInputProps & ExtraInputProps)
+  | (React.InputHTMLAttributes<HTMLInputElement> & ExtraInputProps)
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
