@@ -131,7 +131,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             </Text>
           </View>
         </View>
-        <View className="flex items-center gap-x-4">
+        <View className="flex flex-row items-center gap-x-4">
           <Pressable
             className="flex items-center gap-x-2 text-gray-700"
             onPress={open}
