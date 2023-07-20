@@ -18,7 +18,7 @@ type InputProps = Omit<
   errors?: Record<string, unknown>
   touched?: Record<string, unknown>
   name: string
-  isSubmitting: boolean
+  isSubmitting?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -61,7 +61,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             render={({ field: { value, onChange, onBlur } }) => {
               outerOnBlur = onBlur
               return (
-                <View className={"relative"}>
+                <View className={'relative'}>
                   <TextInput
                     {...props}
                     secureTextEntry={inputType === 'password'}
@@ -93,7 +93,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )}
                     ref={inputRef}
                   />
-                  <View style={{ top: 0, position: 'absolute'}} >
+                  <View style={{ top: 0, position: 'absolute' }}>
                     <MotiPressable
                       onPress={() => {
                         inputRef.current?.focus()
@@ -148,7 +148,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             name={name}
             render={({ message }) => {
               return (
-                <View className=" pt-1 pl-2 ">
+                <View className=" pl-2 pt-1 ">
                   <Text className={`${textXsmallRegular} text-rose-500`}>
                     {message}
                   </Text>
