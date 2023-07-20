@@ -80,19 +80,19 @@ const Title: React.FC = ({ children }) => {
 
 const Description: React.FC = ({ children }) => {
   return (
-    <Dialog.Description className="text-small-regular flex h-full items-center justify-center pt-2 pb-4 text-gray-700">
+    <Dialog.Description className="text-small-regular flex h-full items-center justify-center pb-4 pt-2 text-gray-700">
       {children}
     </Dialog.Description>
   )
 }
 
 const Body: React.FC = ({ children }) => {
-  return <div className="h-full">{children}</div>
+  return <div className="mb-2">{children}</div>
 }
 
 const Footer: React.FC = ({ children }) => {
   return (
-    <Columns space={4} className="flex flex-row items-center justify-end ">
+    <Columns space={4} className="mt-2 flex flex-row items-center justify-end ">
       {children}
     </Columns>
   )
