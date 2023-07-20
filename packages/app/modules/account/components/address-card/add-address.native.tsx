@@ -8,7 +8,7 @@ import Modal from 'app/modules/common/components/modal'
 import Plus from 'app/modules/common/icons/plus'
 import Spinner from 'app/modules/common/icons/spinner'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { View, Text, Pressable, Columns, Stack } from 'app/design'
+import { View, Text, Pressable, Columns, Column, Stack, Row } from 'app/design'
 
 import { FormProvider, useForm } from 'react-hook-form'
 import { Platform } from 'react-native'
@@ -17,7 +17,6 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet'
 import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
-import { Column } from '@mobily/stacks'
 
 type FormValues = {
   first_name: string
@@ -101,13 +100,15 @@ const AddAddressNative: React.FC = () => {
 
   return (
     <>
-      <Pressable
-        className="flex h-full min-h-[220px] w-full flex-col justify-between border border-gray-200 p-5"
-        onPress={handlePresentModalPress}
-      >
-        <Text className="text-base-semi">New address</Text>
-        <Plus size={24} />
-      </Pressable>
+      <Row paddingX={1} className={'ml-3'}>
+        <Pressable
+          className="web:min-h-[220px] full m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
+          onPress={handlePresentModalPress}
+        >
+          <Text className="text-base-semi">New address</Text>
+          <Plus size={24} />
+        </Pressable>
+      </Row>
 
       <BottomSheetModal
         ref={bottomSheetRef}
