@@ -1,6 +1,7 @@
 import OrderCompletedTemplate from 'app/modules/order/templates/order-completed-template'
 import { useOrder } from 'medusa-react'
 import { useRouter } from 'next/router'
+import { Text } from '../../../design'
 
 const OrderDetailsTemplate = () => {
   const router = useRouter()
@@ -12,7 +13,7 @@ const OrderDetailsTemplate = () => {
   })
 
   if (isLoading || !details) {
-    return <View>Loading...</View>
+    return <Text>Loading...</Text>
   }
 
   return <OrderCompletedTemplate order={details} />
