@@ -88,6 +88,9 @@ const AddAddressNative: React.FC = () => {
       metadata: {},
     }
 
+    console.log('payload', payload)
+    return
+
     medusaClient.customers.addresses
       .addAddress({ address: payload })
       .then(() => {
@@ -103,9 +106,9 @@ const AddAddressNative: React.FC = () => {
 
   return (
     <>
-      <Row paddingLeft={1} className={'mb-4 ml-[11px]'}>
+      <Row paddingLeft={1} className={'ios:max-h-[200px] mb-4 ml-[11px]'}>
         <Pressable
-          className="web:min-h-[220px] full m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
+          className="web:min-h-[220px] m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
           onPress={handlePresentModalPress}
         >
           <Text className={` ${textBaseSemi} `}>New address</Text>

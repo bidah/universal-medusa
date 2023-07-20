@@ -76,12 +76,14 @@ const AddAddress: React.FC = () => {
 
     medusaClient.customers.addresses
       .addAddress({ address: payload })
-      .then(() => {
+      .then((res) => {
+        console.log('add address ok', res)
         setSubmitting(false)
         refetchCustomer()
         handleClose()
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log('add address error', e)
         setSubmitting(false)
         setError('Failed to add address, please try again.')
       })

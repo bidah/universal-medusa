@@ -12,8 +12,8 @@ import Trash from 'app/modules/common/icons/trash'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 import { View, Text, Pressable } from 'app/design'
-
 import { useForm } from 'react-hook-form'
+import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
 
 type FormValues = {
   first_name: string
@@ -133,18 +133,18 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </View>
         <View className="flex items-center gap-x-4">
           <Pressable
-            className="text-small-regular flex items-center gap-x-2 text-gray-700"
+            className="flex items-center gap-x-2 text-gray-700"
             onPress={open}
           >
             <Edit size={16} />
-            Edit
+            <Text className={`${textSmallRegular}`}>Edit</Text>
           </Pressable>
           <Pressable
-            className="text-small-regular flex items-center gap-x-2 text-gray-700"
+            className={`flex items-center gap-x-2 text-gray-700`}
             onPress={removeAddress}
           >
             <Trash />
-            Remove
+            <Text className={` ${textSmallRegular} `}>Remove</Text>
           </Pressable>
         </View>
       </View>
@@ -227,9 +227,9 @@ const EditAddress: React.FC<EditAddressProps> = ({
             />
           </View>
           {error && (
-            <View className="text-small-regular py-2 text-rose-500">
+            <Text className={` ${textSmallRegular} py-2 text-rose-500`}>
               {error}
-            </View>
+            </Text>
           )}
         </Modal.Body>
         <Modal.Footer>
