@@ -5,7 +5,7 @@ export default function ConfirmedPage() {
     <>
       <Stack.Screen
         options={{
-          title: `Order Details:`,
+          title: `Order Details`,
         }}
       />
       <OrderDetailsScreen />
