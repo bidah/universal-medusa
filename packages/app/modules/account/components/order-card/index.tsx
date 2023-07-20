@@ -58,7 +58,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
                 images={[]}
                 size="full"
               />
-              <View className="text-small-regular flex items-center text-gray-700">
+              <View className="text-small-regular flex flex-row items-center text-gray-700">
                 <Text className="font-semibold text-gray-900">{i.title}</Text>
                 <Text className="ml-2">x</Text>
                 <Text>{i.quantity}</Text>
