@@ -23,7 +23,7 @@ const OrderOverview = () => {
 
   if (orders?.length) {
     return (
-      <View className="flex w-full flex-col gap-y-8">
+      <View className="flex w-full flex-col gap-y-8 px-2">
         {orders.map((o) => (
           <View
             key={o.id}

@@ -49,7 +49,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
         }`}</Text>
       </View>
       {/*<Columns className="small:grid-cols-4 my-4 grid grid-cols-2 gap-4">*/}
-      <Columns className="my-4 gap-4">
+      <Columns space={2} className="my-4">
         {order.items.slice(0, 3).map((i) => {
           return (
             <View key={i.id} className="flex flex-col gap-y-2">
