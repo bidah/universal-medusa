@@ -10,7 +10,7 @@ import {
   textXlSemi,
 } from '../../../design/tailwind/custom-css-classes'
 
-const AccountLayout: React.FC = ({ children }) => {
+const AccountLayout = ({ children }: { children: React.ReactNode }) => {
   const { customer, retrievingCustomer, checkSession } = useAccount()
 
   useEffect(() => {
