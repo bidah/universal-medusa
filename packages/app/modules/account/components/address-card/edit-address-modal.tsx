@@ -133,14 +133,14 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </View>
         <View className="flex flex-row items-center gap-x-4">
           <Pressable
-            className="flex items-center gap-x-2 text-gray-700"
+            className="flex flex-row items-center gap-x-2 text-gray-700"
             onPress={open}
           >
             <Edit size={16} />
             <Text className={`${textSmallRegular}`}>Edit</Text>
           </Pressable>
           <Pressable
-            className={`flex items-center gap-x-2 text-gray-700`}
+            className={`flex flex-row items-center gap-x-2 text-gray-700`}
             onPress={removeAddress}
           >
             <Trash />
