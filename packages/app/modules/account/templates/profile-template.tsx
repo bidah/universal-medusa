@@ -5,6 +5,7 @@ import ProfilePassword from 'app/modules/account/components/profile-password'
 import ProfileBillingAddress from '../components/profile-billing-address'
 import ProfilePhone from '../components/profile-phone'
 import { View, Pressable, Text, Stack } from 'app/design'
+import { text2xlSemi } from '../../../design/tailwind/custom-css-classes'
 
 const ProfileTemplate = () => {
   const { customer, retrievingCustomer, refetchCustomer } = useAccount()
@@ -16,7 +17,7 @@ const ProfileTemplate = () => {
   return (
     <View className="w-full p-2">
       <View className="mb-8 flex flex-col gap-y-4">
-        <Text className="text-2xl-semi ios:hidden">Profile</Text>
+        <Text className={`${text2xlSemi} ios:hidden`}>Profile</Text>
         <Text className="text-base-regular">
           View and update your profile information, including your name, email,
           and phone number. You can also update your billing address, or change
