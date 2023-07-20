@@ -15,9 +15,9 @@ const AddressesTemplate = () => {
 
   return (
     <View className="w-full">
-      <View className="mb-8 flex flex-col gap-y-4">
-        <Text className={`${text2xlSemi} `}>Shipping Addresses</Text>
-        <Text className={textBaseRegular}>
+      <View className="mx-2 mb-8 flex flex-col gap-y-4">
+        <Text className={`${text2xlSemi} ios:hidden`}>Shipping Addresses</Text>
+        <Text className={`{$textBaseRegular} ios:pt-2`}>
           View and update your shipping addresses, you can add as many as you
           like. Saving your addresses will make them available during checkout.
         </Text>
