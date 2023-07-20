@@ -102,7 +102,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
     <>
       <View
         className={clsx(
-          'flex h-full min-h-[220px] w-full flex-col justify-between border border-gray-200 p-5 transition-colors',
+          'ios:mb-2 web:w-full flex min-h-[220px] flex-col justify-between border border-gray-200 p-5 transition-colors',
           {
             'border-gray-900': isActive,
           }

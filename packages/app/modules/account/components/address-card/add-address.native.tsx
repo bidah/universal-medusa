@@ -106,15 +106,13 @@ const AddAddressNative: React.FC = () => {
 
   return (
     <>
-      <Row paddingLeft={1} className={'ios:max-h-[200px] mb-4 ml-[11px]'}>
-        <Pressable
-          className="web:min-h-[220px] m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
-          onPress={handlePresentModalPress}
-        >
-          <Text className={` ${textBaseSemi} `}>New address</Text>
-          <Plus size={24} />
-        </Pressable>
-      </Row>
+      <Pressable
+        className=" ios:max-h-[200px] web:min-h-[220px] mb-2 flex h-full flex-col justify-between border border-gray-200 p-5"
+        onPress={handlePresentModalPress}
+      >
+        <Text className={` ${textBaseSemi} `}>New address</Text>
+        <Plus size={24} />
+      </Pressable>
 
       <BottomSheetModal
         ref={bottomSheetRef}
