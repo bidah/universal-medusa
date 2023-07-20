@@ -100,7 +100,7 @@ const AddAddressNative: React.FC = () => {
 
   return (
     <>
-      <Row paddingX={1} className={'ml-3'}>
+      <Row paddingLeft={1} className={'mb-4 ml-[11px]'}>
         <Pressable
           className="web:min-h-[220px] full m-2 flex h-full flex-col justify-between border border-gray-200 p-5"
           onPress={handlePresentModalPress}
