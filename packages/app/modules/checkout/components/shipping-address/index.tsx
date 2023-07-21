@@ -27,7 +27,7 @@ const ShippingAddress = () => {
           <Text className="text-small-regular">
             {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
           </Text>
-          {/*<AddressSelect addresses={customer.shipping_addresses} />*/}
+          <AddressSelect addresses={customer.shipping_addresses} />
         </View>
       )}
       <ConnectForm<CheckoutFormValues>>
