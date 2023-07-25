@@ -1,10 +1,16 @@
 import { A, H1, P, Text, TextLink } from 'app/design/typography'
+import UnderlineLink from 'app/modules/common/components/underline-link'
 import { View, Image } from 'app/design'
 import { text2xlSemi } from '../../../../design/tailwind/custom-css-classes'
 
 const Hero = () => {
   return (
-    <View className="web:h-[70vh] ios:h-[240px] relative w-full">
+    <View className="web:h-[70vh] ios:h-[260px] relative w-full">
+      <Image
+        alt="ok"
+        source={{ uri: 'https://i.imgur.com/3CSHcVn.jpg' }}
+        className="h-full w-full object-cover"
+      />
       <View className="small:justify-end small:items-start medium:p-32 absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
         <View className="ios:p-2">
           <Text
@@ -17,13 +23,11 @@ const Hero = () => {
             elements of a world that doesn&apos;t care if you live or die.
           </Text>
         </View>
-        {/*<UnderlineLink href="/store">Explore products</UnderlineLink>*/}
+        <UnderlineLink href="/store" color={'white'}>
+          Explore products
+        </UnderlineLink>
+        <View className="mt-4 h-2 bg-amber-400" />
       </View>
-      <Image
-        alt="ok"
-        source={{ uri: 'https://i.imgur.com/3CSHcVn.jpg' }}
-        className="h-full w-full object-cover"
-      />
       {/*  // layout="fill"*/}
       {/*  // loading="eager"*/}
       {/*  // priority={true}*/}
