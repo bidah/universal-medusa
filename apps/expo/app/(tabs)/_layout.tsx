@@ -80,6 +80,7 @@ const TabBar = () => {
       <Tabs.Screen
         name="(home)"
         options={{
+          title: 'Home',
           headerShown: false,
           tabBarIcon: ({ color, focused }) =>
             ['products', 'store'].some((option) => pathname.includes(option)) ||
