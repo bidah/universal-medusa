@@ -74,6 +74,7 @@ const TabBar = () => {
   return (
     <Tabs
       screenOptions={{
+        headerTintColor: 'black',
         headerShown: false,
         tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'black',
