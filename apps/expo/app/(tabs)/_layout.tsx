@@ -27,6 +27,7 @@ if (__DEV__) {
     'No native splash',
     'Unable to find',
     'Unsupported dashed',
+    '[Reanimated]',
   ])
 } else {
   LogBox.ignoreAllLogs()
@@ -91,21 +92,6 @@ const TabBar = () => {
             ),
         }}
       />
-
-      {/*<Tabs.Screen*/}
-      {/*  name="store"*/}
-      {/*  options={{*/}
-      {/*    headerShown: true,*/}
-      {/*    title: 'Store',*/}
-      {/*    tabBarIcon: ({ color, focused }) =>*/}
-      {/*      focused ? (*/}
-      {/*        <BuildingStorefrontIcon color={color} size={27} />*/}
-      {/*      ) : (*/}
-      {/*        <BuildingStorefrontIconOutline color={color} size={27} />*/}
-      {/*      ),*/}
-      {/*  }}*/}
-      {/*/>*/}
-
       <Tabs.Screen
         name="my-bag"
         options={{
