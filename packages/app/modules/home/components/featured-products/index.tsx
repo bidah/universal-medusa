@@ -16,15 +16,12 @@ import { Link } from 'solito/link'
 const FeaturedProducts = () => {
   const { data } = useFeaturedProductsQuery()
   return (
-    <View className="py-12">
+    <View className="ios:pt-0 web:py-12">
       <View className={clsx(contentContainer, 'py-12')}>
         <View className="mb-16 flex flex-col items-center text-center">
           <Text className="text-base-regular mb-6 text-gray-600">
             Latest products
           </Text>
-          <Link href={'/order/confirmed/order_01H1QCHSBSS10WCFM88NTD7DK0'}>
-            <Text>go to order order_01H...</Text>
-          </Link>
           <Text
             className={clsx(
               text2xlRegular,
