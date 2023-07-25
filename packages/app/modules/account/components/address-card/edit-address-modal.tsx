@@ -12,7 +12,7 @@ import Trash from 'app/modules/common/icons/trash'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 import { View, Text, Pressable } from 'app/design'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
 
 type FormValues = {
@@ -42,11 +42,8 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [error, setError] = useState<string | undefined>(undefined)
 
   const { refetchCustomer } = useAccount()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({
+
+  const methods = useForm<FormValues>({
     defaultValues: {
       first_name: address.first_name || undefined,
       last_name: address.last_name || undefined,
@@ -60,37 +57,55 @@ const EditAddress: React.FC<EditAddressProps> = ({
       province: address.province || undefined,
     },
   })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = methods
 
-  const submit = handleSubmit(async (data: FormValues) => {
-    setSubmitting(true)
-    setError(undefined)
+  console.log(
+    'handleSubmit',
+    handleSubmit((data) => {
+      return data
+    })
+  )
 
-    const payload = {
-      first_name: data.first_name,
-      last_name: data.last_name,
-      company: data.company || 'Personal',
-      address_1: data.address_1,
-      address_2: data.address_2 || '',
-      city: data.city,
-      country_code: data.country_code,
-      province: data.province || '',
-      postal_code: data.postal_code,
-      phone: data.phone || 'None',
-      metadata: {},
+  const submit = handleSubmit(
+    async (data: FormValues) => {
+      setSubmitting(true)
+      setError(undefined)
+
+      const payload = {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        company: data.company || 'Personal',
+        address_1: data.address_1,
+        address_2: data.address_2 || '',
+        city: data.city,
+        country_code: data.country_code,
+        province: data.province || '',
+        postal_code: data.postal_code,
+        phone: data.phone || 'None',
+        metadata: {},
+      }
+
+      medusaClient.customers.addresses
+        .updateAddress(address.id, payload)
+        .then(() => {
+          setSubmitting(false)
+          refetchCustomer()
+          close()
+        })
+        .catch(() => {
+          setSubmitting(false)
+          setError('Failed to update address, please try again.')
+        })
+    },
+    (e) => {
+      console.log(e)
+      setError('Failed to update address, please try again.')
     }
-
-    medusaClient.customers.addresses
-      .updateAddress(address.id, payload)
-      .then(() => {
-        setSubmitting(false)
-        refetchCustomer()
-        close()
-      })
-      .catch(() => {
-        setSubmitting(false)
-        setError('Failed to update address, please try again.')
-      })
-  })
+  )
 
   const removeAddress = () => {
     medusaClient.customers.addresses.deleteAddress(address.id).then(() => {
@@ -152,80 +167,82 @@ const EditAddress: React.FC<EditAddressProps> = ({
       <Modal isOpen={state} close={close}>
         <Modal.Title>Edit address</Modal.Title>
         <Modal.Body>
-          <View className="grid grid-cols-1 gap-y-2">
-            <View className="grid grid-cols-2 gap-x-2">
+          <FormProvider {...methods}>
+            <View className="grid grid-cols-1 gap-y-2">
+              <View className="grid grid-cols-2 gap-x-2">
+                <Input
+                  label="First name"
+                  {...register('first_name', {
+                    required: 'First name is required',
+                  })}
+                  required
+                  errors={errors}
+                  autoComplete="given-name"
+                />
+                <Input
+                  label="Last name"
+                  {...register('last_name', {
+                    required: 'Last name is required',
+                  })}
+                  required
+                  errors={errors}
+                  autoComplete="family-name"
+                />
+              </View>
+              <Input label="Company" {...register('company')} errors={errors} />
               <Input
-                label="First name"
-                {...register('first_name', {
-                  required: 'First name is required',
+                label="Address"
+                {...register('address_1', {
+                  required: 'Address is required',
                 })}
                 required
                 errors={errors}
-                autoComplete="given-name"
+                autoComplete="address-line1"
               />
               <Input
-                label="Last name"
-                {...register('last_name', {
-                  required: 'Last name is required',
-                })}
-                required
+                label="Apartment, suite, etc."
+                {...register('address_2')}
                 errors={errors}
-                autoComplete="family-name"
+                autoComplete="address-line2"
+              />
+              <View className="grid grid-cols-[144px_1fr] gap-x-2">
+                <Input
+                  label="Postal code"
+                  {...register('postal_code', {
+                    required: 'Postal code is required',
+                  })}
+                  required
+                  errors={errors}
+                  autoComplete="postal-code"
+                />
+                <Input
+                  label="City"
+                  {...register('city', {
+                    required: 'City is required',
+                  })}
+                  errors={errors}
+                  required
+                  autoComplete="locality"
+                />
+              </View>
+              <Input
+                label="Province / State"
+                {...register('province')}
+                errors={errors}
+                autoComplete="address-level1"
+              />
+              <CountrySelect
+                {...register('country_code', { required: true })}
+                autoComplete="country"
+              />
+              <Input
+                label="Phone"
+                {...register('phone')}
+                errors={errors}
+                autoComplete="phone"
               />
             </View>
-            <Input label="Company" {...register('company')} errors={errors} />
-            <Input
-              label="Address"
-              {...register('address_1', {
-                required: 'Address is required',
-              })}
-              required
-              errors={errors}
-              autoComplete="address-line1"
-            />
-            <Input
-              label="Apartment, suite, etc."
-              {...register('address_2')}
-              errors={errors}
-              autoComplete="address-line2"
-            />
-            <View className="grid grid-cols-[144px_1fr] gap-x-2">
-              <Input
-                label="Postal code"
-                {...register('postal_code', {
-                  required: 'Postal code is required',
-                })}
-                required
-                errors={errors}
-                autoComplete="postal-code"
-              />
-              <Input
-                label="City"
-                {...register('city', {
-                  required: 'City is required',
-                })}
-                errors={errors}
-                required
-                autoComplete="locality"
-              />
-            </View>
-            <Input
-              label="Province / State"
-              {...register('province')}
-              errors={errors}
-              autoComplete="address-level1"
-            />
-            <CountrySelect
-              {...register('country_code', { required: true })}
-              autoComplete="country"
-            />
-            <Input
-              label="Phone"
-              {...register('phone')}
-              errors={errors}
-              autoComplete="phone"
-            />
-          </View>
+          </FormProvider>
           {error && (
             <Text className={` ${textSmallRegular} py-2 text-rose-500`}>
               {error}
