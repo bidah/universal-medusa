@@ -28,6 +28,7 @@ if (__DEV__) {
     'Unable to find',
     'Unsupported dashed',
     '[Reanimated]',
+    'cannot be given ref',
   ])
 } else {
   LogBox.ignoreAllLogs()
