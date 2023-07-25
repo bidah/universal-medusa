@@ -88,9 +88,6 @@ const AddAddressNative: React.FC = () => {
       metadata: {},
     }
 
-    console.log('payload', payload)
-    return
-
     medusaClient.customers.addresses
       .addAddress({ address: payload })
       .then(() => {

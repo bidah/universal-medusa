@@ -10,10 +10,14 @@ import Edit from 'app/modules/common/icons/edit'
 import Spinner from 'app/modules/common/icons/spinner'
 import Trash from 'app/modules/common/icons/trash'
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { View, Text, Pressable } from 'app/design'
 import { FormProvider, useForm } from 'react-hook-form'
 import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
+import BottomSheet, {
+  BottomSheetModal,
+  BottomSheetScrollView,
+} from '@gorhom/bottom-sheet'
 
 type FormValues = {
   first_name: string
@@ -37,7 +41,11 @@ const EditAddress: React.FC<EditAddressProps> = ({
   address,
   isActive = false,
 }) => {
-  const { state, open, close } = useToggleState(false)
+  const bottomSheetRef = useRef<BottomSheet>(null)
+  const snapPoints = useMemo(() => ['85%', '85%'], [])
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetRef.current?.present()
+  }, [])
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | undefined>(undefined)
 
@@ -63,13 +71,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
     formState: { errors },
   } = methods
 
-  console.log(
-    'handleSubmit',
-    handleSubmit((data) => {
-      return data
-    })
-  )
-
   const submit = handleSubmit(
     async (data: FormValues) => {
       setSubmitting(true)
@@ -94,7 +95,8 @@ const EditAddress: React.FC<EditAddressProps> = ({
         .then(() => {
           setSubmitting(false)
           refetchCustomer()
-          close()
+
+          bottomSheetRef.current?.close()
         })
         .catch(() => {
           setSubmitting(false)
@@ -149,7 +151,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
         <View className="flex flex-row items-center gap-x-4">
           <Pressable
             className="flex flex-row items-center gap-x-2 text-gray-700"
-            onPress={open}
+            onPress={handlePresentModalPress}
           >
             <Edit size={16} />
             <Text className={`${textSmallRegular}`}>Edit</Text>
@@ -164,10 +166,22 @@ const EditAddress: React.FC<EditAddressProps> = ({
         </View>
       </View>
 
-      <Modal isOpen={state} close={close}>
-        <Modal.Title>Edit address</Modal.Title>
-        <Modal.Body>
-          <FormProvider {...methods}>
+      <BottomSheetModal
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPoints}
+        backgroundStyle={{ backgroundColor: 'white' }}
+        backgroundComponent={(props) => (
+          <View {...props} className="border-t-[1px]" />
+        )}
+      >
+        <FormProvider {...methods}>
+          <BottomSheetScrollView
+            style={{
+              marginHorizontal: 8,
+            }}
+            keyboardShouldPersistTaps={'always'}
+          >
             <View className="grid grid-cols-1 gap-y-2">
               <View className="grid grid-cols-2 gap-x-2">
                 <Input
@@ -231,10 +245,11 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 errors={errors}
                 autoComplete="address-level1"
               />
-              <CountrySelect
-                {...register('country_code', { required: true })}
-                autoComplete="country"
-              />
+              {/*<CountrySelect*/}
+              {/*  {...register('country_code', { required: true })}*/}
+              {/*  autoComplete="country"*/}
+              {/*  bottomSheetRef={bottomSheetRef}*/}
+              {/*/>*/}
               <Input
                 label="Phone"
                 {...register('phone')}
@@ -242,23 +257,27 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 autoComplete="phone"
               />
             </View>
-          </FormProvider>
-          {error && (
-            <Text className={` ${textSmallRegular} py-2 text-rose-500`}>
-              {error}
-            </Text>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onPress={close}>
-            Cancel
-          </Button>
-          <Button onPress={submit} disabled={submitting}>
-            Save
-            {submitting && <Spinner />}
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onPress={() => bottomSheetRef.current?.close()}
+              >
+                Cancel
+              </Button>
+              <Button onPress={submit} disabled={submitting}>
+                Save
+                {submitting && <Spinner color={'white'} className={'ml-2'} />}
+              </Button>
+            </Modal.Footer>
+          </BottomSheetScrollView>
+        </FormProvider>
+        {error && (
+          <Text className={` ${textSmallRegular} py-2 text-rose-500`}>
+            {error}
+          </Text>
+        )}
+        {/*</Modal.Body>*/}
+      </BottomSheetModal>
     </>
   )
 }
