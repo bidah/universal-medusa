@@ -18,6 +18,7 @@ import BottomSheet, {
   BottomSheetModal,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet'
+import { useCart, useRegions } from 'medusa-react'
 
 type FormValues = {
   first_name: string
@@ -48,6 +49,9 @@ const EditAddress: React.FC<EditAddressProps> = ({
   }, [])
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | undefined>(undefined)
+
+  const { regions } = useRegions()
+  const { cart } = useCart()
 
   const { refetchCustomer } = useAccount()
 
@@ -245,11 +249,13 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 errors={errors}
                 autoComplete="address-level1"
               />
-              {/*<CountrySelect*/}
-              {/*  {...register('country_code', { required: true })}*/}
-              {/*  autoComplete="country"*/}
-              {/*  bottomSheetRef={bottomSheetRef}*/}
-              {/*/>*/}
+              <CountrySelect
+                {...register('country_code', { required: true })}
+                autoComplete="country"
+                bottomSheetRef={bottomSheetRef}
+                regions={regions}
+                cart={cart}
+              />
               <Input
                 label="Phone"
                 {...register('phone')}
