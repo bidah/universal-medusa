@@ -58,7 +58,7 @@ const RelatedProducts = ({ product }: RelatedProductsProps) => {
   const previews = usePreviews({ pages: data?.pages, region: cart?.region })
 
   return (
-    <View className={'w-full '}>
+    <View className={'w-full'}>
       <View className=" mb-16 flex flex-col items-center">
         <Text className={`${textBaseRegular} mb-6 text-gray-600`}>
           Related products
