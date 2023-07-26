@@ -34,7 +34,7 @@ const CheckoutTemplate = () => {
           {/*<CheckoutLoader />*/}
           <View className="small:grid-cols-[1fr_416px] small:content-container small:grid xs:grid-cols-1 small:gap-y-8 small:gap-x-8 ios:pb-0 ios:pt-8 web:py-12">
             <CheckoutForm />
-            <CheckoutSummary />
+            {/*<CheckoutSummary />*/}
           </View>
         </View>
         <View className="flex w-full items-center justify-center py-4">

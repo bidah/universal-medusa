@@ -22,7 +22,9 @@ const CheckoutForm = () => {
           <Shipping cart={cart} />
         </View>
 
-        <View><Payment /></View>
+        <View>
+          <Payment />
+        </View>
       </View>
     </View>
   )

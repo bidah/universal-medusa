@@ -56,7 +56,7 @@ const Addresses = () => {
         </View>
       ) : (
         <View>
-          <View className="small:px-8  bg-gray-50 py-6 px-0">
+          <View className="small:px-8  bg-gray-50 px-0 py-6">
             {cart && cart.shipping_address ? (
               <View className="flex flex-row items-start gap-x-8">
                 <View className=" flex h-6 min-w-[24px] flex-row items-center justify-center rounded-full bg-green-400">
