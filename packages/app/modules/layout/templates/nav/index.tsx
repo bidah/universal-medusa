@@ -2,14 +2,14 @@ import { useMobileMenu } from 'app/lib/context/mobile-menu-context'
 import Hamburger from 'app/modules/common/components/hamburger'
 // import CartDropdown from 'app/modules/layout/components/cart-dropdown'
 import DropdownMenu from 'app/modules/layout/components/dropdown-menu'
-// import MobileMenu from 'app/modules/mobile-menu/templates'
+import MobileMenu from 'app/modules/mobile-menu/templates'
 // import DesktopSearchModal from 'app/modules/search/templates/desktop-search-modal'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import CartDropdown from '../../components/cart-dropdown'
-import {Link as SSLink} from 'app/design'
+import { Link as SSLink } from 'app/design'
 import { textXlSemi } from 'app/design/tailwind/custom-css-classes'
 
 const Nav = () => {
@@ -73,23 +73,21 @@ const Nav = () => {
             </div>
           </div>
 
-          {/*<div className="flex h-full items-center">*/}
-          {/*  <SSLink href="/" className={`${textXlSemi} uppercase`}>*/}
-          {/*    Acme*/}
-          {/*  </SSLink>*/}
-          {/*</div>*/}
+          <div className="flex h-full items-center">
+            <SSLink href="/" className={`${textXlSemi} uppercase`}>
+              Acme
+            </SSLink>
+          </div>
 
           <div className="flex h-full flex-1 basis-0 items-center justify-end gap-x-6">
             <div className="small:flex hidden h-full items-center gap-x-6">
               {/*{process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}*/}
-              <Link href="/account">
-                Account
-              </Link>
+              <Link href="/account">Account</Link>
             </div>
             <CartDropdown />
           </div>
         </nav>
-        {/*<MobileMenu />*/}
+        <MobileMenu />
       </header>
     </div>
   )
