@@ -53,7 +53,6 @@ const fetchFeaturedProducts = async (
     .then(({ products }) => products)
     .catch((_) => [] as Product[])
 
-  console.log('products ->', products)
   return products
     .filter((p) => !!p.variants)
     .map((p) => {
