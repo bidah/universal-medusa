@@ -1,5 +1,5 @@
 import 'raf/polyfill'
-import "setimmediate"
+import 'setimmediate'
 const fixReanimatedIssue = () => {
   // FIXME remove this once this reanimated fix gets released
   // https://github.com/software-mansion/react-native-reanimated/issues/3355
@@ -19,6 +19,7 @@ import '../global.css'
 import { AppProps } from 'next/app'
 import Nav from 'app/modules/layout/templates/nav'
 import { MobileMenuProvider } from 'app/lib/context/mobile-menu-context'
+import Layout from 'app/modules/layout/templates'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -33,8 +34,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <Provider>
         <MobileMenuProvider>
-          <Nav />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </MobileMenuProvider>
       </Provider>
     </>
