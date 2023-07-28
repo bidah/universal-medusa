@@ -15,6 +15,7 @@
     "expo-status-bar": "^1.4.4",
     "install": "^0.13.0",
     "npx": "^10.2.2",
+    "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
@@ -38,7 +39,7 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "postinstall": "cd ../.. && yarn patch-package"
+    "postinstall": "yarn patch-package"
   },
   "version": "1.0.0",
   "private": true,

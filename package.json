@@ -36,7 +36,9 @@
     "**/react-native-reanimated",
     "**/react-native-reanimated/**",
     "**/packages/**/react-native-reanimated",
-    "**/packages/**/react-native-reanimated/**"
+    "**/packages/**/react-native-reanimated/**",
+    "**/@gorhom/bottom-sheet",
+    "**/@gorhom/bottom-sheet/**"
   ],
   "packageManager": "yarn@3.4.1"
 }
