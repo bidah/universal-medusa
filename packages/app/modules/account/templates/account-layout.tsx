@@ -26,7 +26,7 @@ const AccountLayout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <View className="small:py-12 small:bg-gray-50 flex-1">
+    <View className="small:py-12 small:bg-gray-50 ios:bg-white flex-1">
       <View className="mx-auto flex h-full max-w-5xl flex-1 flex-col bg-white">
         <View className="small:grid-cols-[240px_1fr] small:px-8 small:py-12 grid grid-cols-1 py-6 ">
           <View>
