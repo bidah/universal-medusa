@@ -23,7 +23,7 @@ const ShippingAddress = () => {
   return (
     <FadeIn>
       {customer && (customer.shipping_addresses?.length || 0) > 0 && (
-        <View className="mb-6 flex flex-col gap-y-4 bg-amber-100 p-4">
+        <View className="z-10 mb-6 flex flex-col gap-y-4 bg-amber-100 p-4">
           <Text className="text-small-regular">
             {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
           </Text>
@@ -35,7 +35,7 @@ const ShippingAddress = () => {
           const { errors, touchedFields, isSubmitting } = formState
 
           return (
-            <Stack space={2}>
+            <Stack space={2} className="bg-white">
               <Input
                 label="Email"
                 {...register('email', {
