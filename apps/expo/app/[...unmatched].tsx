@@ -1,3 +1,5 @@
-import { Unmatched } from 'expo-router'
+import { Unmatched, Redirect } from 'expo-router'
 
-export default Unmatched
+export default function UnmatchedScreen() {
+  return <Redirect href={'/'} />
+}
