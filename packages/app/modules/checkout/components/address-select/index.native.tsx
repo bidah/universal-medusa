@@ -56,23 +56,21 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
       }
     }
   }, [currentShippingAddress, addresses])
-  console.log('selectedAddress:', selectedAddress)
 
   return (
     // <Listbox onChange={handleSelect} value={selected}>
     <View className="relative">
-      <Button>
-        {/*{({ open }) => (*/}
-        <>
-          <Text className="block truncate">
+      <Button
+        style={
+          'border-top-0 z-20 border border-gray-200 bg-white sm:text-sm ph-2 px-4 pb-1'
+        }
+      >
+        <View className="flex min-w-full flex-row items-center justify-between ">
+          <Text className="between block truncate text-black">
             {selectedAddress ? selectedAddress.address_1 : 'Choose an address'}
           </Text>
-          <ChevronDown
-            size={16}
-            // className={clsx({ 'rotate-180 transform': open })}
-            // className={clsx({ 'rotate-180 transform': open })}
-          />
-        </>
+          <ChevronDown size={16} />
+        </View>
         {/*)}*/}
       </Button>
       {/*<Listbox.Options className="text-small-regular border-top-0 absolute z-20 max-h-60 w-full overflow-auto border border-gray-200 bg-white focus:outline-none sm:text-sm">*/}
