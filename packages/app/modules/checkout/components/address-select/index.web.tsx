@@ -43,11 +43,12 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
           'deleted_at',
           'metadata',
           'customer_id',
+          'country_code',
         ]),
-        currentShippingAddress
+        omit(currentShippingAddress, ['country_code'])
       )
-
       if (checkEquality) {
+        console.log(address)
         return address
       }
     }

@@ -1,4 +1,3 @@
-import { Listbox, Transition } from '@headlessui/react'
 import { useCheckout } from 'app/lib/context/checkout-context'
 import { Address } from '@medusajs/medusa'
 import Radio from 'app/modules/common/components/radio'
@@ -34,6 +33,8 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
     name: 'shipping_address',
   })
 
+  console.log('currentShippingAddress', currentShippingAddress)
+
   const selectedAddress = useMemo(() => {
     for (const address of addresses) {
       const checkEquality = isEqual(
@@ -45,8 +46,9 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
           'deleted_at',
           'metadata',
           'customer_id',
+          'country_code',
         ]),
-        currentShippingAddress
+        omit(currentShippingAddress, ['country_code'])
       )
 
       if (checkEquality) {
@@ -54,6 +56,7 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
       }
     }
   }, [currentShippingAddress, addresses])
+  console.log('selectedAddress:', selectedAddress)
 
   return (
     // <Listbox onChange={handleSelect} value={selected}>

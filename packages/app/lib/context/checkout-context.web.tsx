@@ -21,7 +21,6 @@ import { useRouter } from 'solito/router'
 import React, { createContext, useContext, useEffect, useMemo } from 'react'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { useStore } from './store-context'
-import { Platform } from 'react-native'
 
 type AddressValues = {
   first_name: string
