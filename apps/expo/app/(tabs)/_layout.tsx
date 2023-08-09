@@ -29,6 +29,7 @@ if (__DEV__) {
     'Unsupported dashed',
     '[Reanimated]',
     'cannot be given ref',
+    'Each child in a list',
   ])
 } else {
   LogBox.ignoreAllLogs()
