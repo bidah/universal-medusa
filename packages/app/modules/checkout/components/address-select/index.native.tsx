@@ -58,7 +58,7 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
   return (
     // <Listbox onChange={handleSelect} value={selected}>
     <View className="relative">
-      <Button className="text-base-regular relative flex w-full cursor-default items-center justify-between border border-gray-200 bg-white px-4 py-[10px] text-left focus:outline-none focus-visible:border-gray-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-300">
+      <Button>
         {/*{({ open }) => (*/}
         <>
           <Text className="block truncate">

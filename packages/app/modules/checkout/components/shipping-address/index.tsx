@@ -24,7 +24,7 @@ const ShippingAddress = () => {
     <FadeIn>
       {customer && (customer.shipping_addresses?.length || 0) > 0 && (
         <View className="z-10 mb-6 flex flex-col gap-y-4 bg-amber-100 p-4">
-          <Text className="text-small-regular">
+          <Text className="text-small-regular mb-2">
             {`Hi ${customer.first_name}, do you want to use one of your saved addresses?`}
           </Text>
           <AddressSelect addresses={customer.shipping_addresses} />
