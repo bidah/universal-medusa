@@ -16,6 +16,7 @@ type ExtraInputProps = {
   errors?: Record<string, unknown>
   touched?: Record<string, unknown>
   name: string
+  removeAnimation: boolean
 }
 
 type InputProps =
@@ -24,7 +25,17 @@ type InputProps =
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { type, name, label, errors, touched, required, isSubmitting, ...props },
+    {
+      type,
+      name,
+      label,
+      errors,
+      touched,
+      required,
+      isSubmitting,
+      removeAnimation,
+      ...props
+    },
     ref
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null)
@@ -47,12 +58,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const hasError = get(errors, name) && get(touched, name)
 
     const [isFocused, setIsFocused] = useState(false)
-    let outerOnBlur
-    useEffect(() => {
-      if (isSubmitting && isFocused) {
-        outerOnBlur()
-      }
-    }, [formState])
+    // let outerOnBlur
+    // useEffect(() => {
+    //   if (isSubmitting && isFocused) {
+    //     outerOnBlur()
+    //   }
+    //   console.log('here')
+    // }, [formState])
 
     return (
       <View>
@@ -60,7 +72,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <Controller
             name={name}
             render={({ field: { value, onChange, onBlur } }) => {
-              outerOnBlur = onBlur
+              // outerOnBlur = onBlur
+
+              console.log('onchange', onChange)
+              console.log('value', value)
               return (
                 <View className={'relative'}>
                   <TextInput
@@ -74,9 +89,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     editable={true}
                     type={inputType}
                     name={name}
-                    value={value}
+                    value={String(value)}
                     placeholder=" "
-                    onChangeText={onChange}
+                    // onChangeText={onChange}
                     onBlur={(e) => {
                       setIsFocused(false)
                       onBlur(e)
@@ -89,7 +104,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     className={clsx(
                       'w-full appearance-none border border-gray-200 bg-transparent px-4 py-3 pt-5 focus:outline-none focus:ring-0',
                       {
-                        'border-rose-500 focus:border-rose-500': hasError,
+                        'border-rose-500 focus:border-rose-500':
+                          Boolean(hasError),
                       }
                     )}
                     ref={inputRef}
@@ -110,10 +126,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                         display: 'flex',
                         flexDirection: 'row',
                       }}
-                      animate={{
-                        opacity: 1,
-                        top: isFocused || value?.length ? 6 : 17,
-                      }}
+                      animate={
+                        !removeAnimation
+                          ? {
+                              ...{
+                                opacity: 1,
+                                top: isFocused || value?.length ? 6 : 17,
+                              },
+                            }
+                          : {}
+                      }
                       transition={{
                         type: 'timing',
                       }}
@@ -143,21 +165,21 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {/*  </button>*/}
           {/*)}*/}
         </View>
-        {hasError && (
-          <ErrorMessage
-            errors={errors}
-            name={name}
-            render={({ message }) => {
-              return (
-                <View className=" pl-2 pt-1 ">
-                  <Text className={`${textXsmallRegular} text-rose-500`}>
-                    {message}
-                  </Text>
-                </View>
-              )
-            }}
-          />
-        )}
+        {/*{Boolean(hasError) && (*/}
+        {/*  <ErrorMessage*/}
+        {/*    errors={errors}*/}
+        {/*    name={name}*/}
+        {/*    render={({ message }) => {*/}
+        {/*      return (*/}
+        {/*        <View className=" pl-2 pt-1 ">*/}
+        {/*          <Text className={`${textXsmallRegular} text-rose-500`}>*/}
+        {/*            {message}*/}
+        {/*          </Text>*/}
+        {/*        </View>*/}
+        {/*      )*/}
+        {/*    }}*/}
+        {/*  />*/}
+        {/*)}*/}
       </View>
     )
   }
