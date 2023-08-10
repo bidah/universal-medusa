@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { isEqual, omit } from 'lodash'
 import { Fragment, useCallback, useMemo, useState } from 'react'
 import { useWatch } from 'react-hook-form'
-import { Text, View } from '../../../../design'
+import { Pressable, Text, View } from '../../../../design'
 import Button from '../../../common/components/button'
 import { useRef } from 'react/index'
 import BottomSheet, {
@@ -24,23 +24,20 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
   const [selected, setSelected] = useState<string | undefined>(undefined)
 
   const { control, setSavedAddress } = useCheckout()
-
+  const bottomSheetRef = useRef<BottomSheet>(null)
   const handleSelect = (id: string) => {
     const savedAddress = addresses.find((a) => a.id === id)
-
     if (savedAddress) {
       setSavedAddress(savedAddress)
     }
-
     setSelected(id)
+    // bottomSheetRef.current?.close()
   }
 
   const currentShippingAddress = useWatch({
     control,
     name: 'shipping_address',
   })
-
-  console.log('currentShippingAddress', currentShippingAddress)
 
   const selectedAddress = useMemo(() => {
     for (const address of addresses) {
@@ -64,15 +61,9 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
     }
   }, [currentShippingAddress, addresses])
 
-  const bottomSheetRef = useRef<BottomSheet>(null)
   const snapPoints = useMemo(() => ['65%', '65%'], [])
   const handlePresentModalPress = useCallback(() => {
-    console.log('on handle')
     bottomSheetRef.current?.present()
-    console.log(
-      'bottomSheetRef.current?.present',
-      bottomSheetRef.current?.present
-    )
   }, [])
 
   return (
@@ -87,46 +78,48 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
           <View {...props} className="border-t-[1px]" />
         )}
       >
-        <View className="flex-column flex">
-          {addresses.map((address) => {
-            return (
-              <View
-                key={address.id}
-                value={address.id}
-                className="relative cursor-default select-none py-4 pl-6 pr-10 hover:bg-gray-50"
-              >
-                <View className="flex flex-row items-start gap-x-4">
-                  <Radio checked={selected === address.id} />
-                  <View className="flex flex-col">
-                    <Text className="text-base-semi text-left">
-                      {address.first_name} {address.last_name}
-                    </Text>
-                    {address.company && (
-                      <Text className="text-small-regular text-gray-700">
-                        {address.company}
+        <BottomSheetScrollView>
+          <View className="flex-column flex">
+            {addresses.map((address) => {
+              return (
+                <Pressable
+                  onPress={() => handleSelect(address.id)}
+                  key={address.id}
+                  className="relative cursor-default select-none py-4 pl-6 pr-10 hover:bg-gray-50"
+                >
+                  <View className="flex flex-row items-start gap-x-4">
+                    <Radio checked={selected === address.id} />
+                    <View className="flex flex-col">
+                      <Text className="text-base-semi text-left">
+                        {address.first_name} {address.last_name}
                       </Text>
-                    )}
-                    <View className="text-base-regular mt-2 flex flex-col text-left">
-                      <Text>
-                        {address.address_1}
-                        {address.address_2 && (
-                          <Text>, {address.address_2}</Text>
-                        )}
-                      </Text>
-                      <Text>
-                        {address.postal_code}, {address.city}
-                      </Text>
-                      <Text>
-                        {address.province && `${address.province}, `}
-                        {address.country_code?.toUpperCase()}
-                      </Text>
+                      {address.company && (
+                        <Text className="text-small-regular text-gray-700">
+                          {address.company}
+                        </Text>
+                      )}
+                      <View className="text-base-regular mt-2 flex flex-col text-left">
+                        <Text>
+                          {address.address_1}
+                          {address.address_2 && (
+                            <Text>, {address.address_2}</Text>
+                          )}
+                        </Text>
+                        <Text>
+                          {address.postal_code}, {address.city}
+                        </Text>
+                        <Text>
+                          {address.province && `${address.province}, `}
+                          {address.country_code?.toUpperCase()}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </View>
-            )
-          })}
-        </View>
+                </Pressable>
+              )
+            })}
+          </View>
+        </BottomSheetScrollView>
       </BottomSheetModal>
 
       <Button
