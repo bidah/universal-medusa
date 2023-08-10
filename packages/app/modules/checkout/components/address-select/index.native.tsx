@@ -31,7 +31,9 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
       setSavedAddress(savedAddress)
     }
     setSelected(id)
-    // bottomSheetRef.current?.close()
+    setTimeout(() => {
+      bottomSheetRef.current?.close()
+    }, 1000)
   }
 
   const currentShippingAddress = useWatch({
@@ -67,7 +69,6 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
   }, [])
 
   return (
-    // <Listbox onChange={handleSelect} value={selected}>
     <View className="relative z-40">
       <BottomSheetModal
         ref={bottomSheetRef}
@@ -135,10 +136,7 @@ const AddressSelect = ({ addresses }: AddressSelectProps) => {
           <ChevronDown size={16} />
         </View>
       </Button>
-      {/*<Listbox.Options className="text-small-regular border-top-0 absolute z-20 max-h-60 w-full overflow-auto border border-gray-200 bg-white focus:outline-none sm:text-sm">*/}
-      {/*</Listbox.Options>*/}
     </View>
-    // </Listbox>
   )
 }
 
