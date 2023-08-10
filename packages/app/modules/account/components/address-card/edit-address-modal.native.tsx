@@ -11,9 +11,10 @@ import Spinner from 'app/modules/common/icons/spinner'
 import Trash from 'app/modules/common/icons/trash'
 import clsx from 'clsx'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { View, Text, Pressable } from 'app/design'
+import { View, Text, Pressable, Columns } from 'app/design'
 import { FormProvider, useForm } from 'react-hook-form'
 import { textSmallRegular } from '../../../../design/tailwind/custom-css-classes'
+import { Stack } from 'app/design'
 import BottomSheet, {
   BottomSheetModal,
   BottomSheetScrollView,
@@ -186,27 +187,25 @@ const EditAddress: React.FC<EditAddressProps> = ({
             }}
             keyboardShouldPersistTaps={'always'}
           >
-            <View className="grid grid-cols-1 gap-y-2">
-              <View className="grid grid-cols-2 gap-x-2">
-                <Input
-                  label="First name"
-                  {...register('first_name', {
-                    required: 'First name is required',
-                  })}
-                  required
-                  errors={errors}
-                  autoComplete="given-name"
-                />
-                <Input
-                  label="Last name"
-                  {...register('last_name', {
-                    required: 'Last name is required',
-                  })}
-                  required
-                  errors={errors}
-                  autoComplete="family-name"
-                />
-              </View>
+            <Stack space={2}>
+              <Input
+                label="First name"
+                {...register('first_name', {
+                  required: 'First name is required',
+                })}
+                required
+                errors={errors}
+                autoComplete="given-name"
+              />
+              <Input
+                label="Last name"
+                {...register('last_name', {
+                  required: 'Last name is required',
+                })}
+                required
+                errors={errors}
+                autoComplete="family-name"
+              />
               <Input label="Company" {...register('company')} errors={errors} />
               <Input
                 label="Address"
@@ -223,46 +222,45 @@ const EditAddress: React.FC<EditAddressProps> = ({
                 errors={errors}
                 autoComplete="address-line2"
               />
-              <View className="grid grid-cols-[144px_1fr] gap-x-2">
-                <Input
-                  label="Postal code"
-                  {...register('postal_code', {
-                    required: 'Postal code is required',
-                  })}
-                  required
-                  errors={errors}
-                  autoComplete="postal-code"
-                />
-                <Input
-                  label="City"
-                  {...register('city', {
-                    required: 'City is required',
-                  })}
-                  errors={errors}
-                  required
-                  autoComplete="locality"
-                />
-              </View>
+              <Input
+                label="Postal code"
+                {...register('postal_code', {
+                  required: 'Postal code is required',
+                })}
+                required
+                errors={errors}
+                autoComplete="postal-code"
+              />
+              <Input
+                label="City"
+                {...register('city', {
+                  required: 'City is required',
+                })}
+                errors={errors}
+                required
+                autoComplete="locality"
+              />
               <Input
                 label="Province / State"
                 {...register('province')}
                 errors={errors}
                 autoComplete="address-level1"
               />
-              <CountrySelect
-                {...register('country_code', { required: true })}
-                autoComplete="country"
-                bottomSheetRef={bottomSheetRef}
-                regions={regions}
-                cart={cart}
-              />
+              {/*TODO add country select*/}
+              {/*<CountrySelect*/}
+              {/*  {...register('country_code', { required: true })}*/}
+              {/*  autoComplete="country"*/}
+              {/*  bottomSheetRef={bottomSheetRef}*/}
+              {/*  regions={regions}*/}
+              {/*  cart={cart}*/}
+              {/*/>*/}
               <Input
                 label="Phone"
                 {...register('phone')}
                 errors={errors}
                 autoComplete="phone"
               />
-            </View>
+            </Stack>
             <Modal.Footer>
               <Button
                 variant="secondary"

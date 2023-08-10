@@ -58,13 +58,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const hasError = get(errors, name) && get(touched, name)
 
     const [isFocused, setIsFocused] = useState(false)
-    // let outerOnBlur
-    // useEffect(() => {
-    //   if (isSubmitting && isFocused) {
-    //     outerOnBlur()
-    //   }
-    //   console.log('here')
-    // }, [formState])
+    let outerOnBlur
+    useEffect(() => {
+      if (isSubmitting && isFocused) {
+        outerOnBlur()
+      }
+      console.log('here')
+    }, [formState])
 
     return (
       <View>
@@ -72,10 +72,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <Controller
             name={name}
             render={({ field: { value, onChange, onBlur } }) => {
-              // outerOnBlur = onBlur
+              outerOnBlur = onBlur
 
-              console.log('onchange', onChange)
-              console.log('value', value)
               return (
                 <View className={'relative'}>
                   <TextInput
@@ -89,9 +87,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     editable={true}
                     type={inputType}
                     name={name}
-                    value={String(value)}
+                    value={value}
                     placeholder=" "
-                    // onChangeText={onChange}
+                    onChangeText={onChange}
                     onBlur={(e) => {
                       setIsFocused(false)
                       onBlur(e)
@@ -165,21 +163,21 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {/*  </button>*/}
           {/*)}*/}
         </View>
-        {/*{Boolean(hasError) && (*/}
-        {/*  <ErrorMessage*/}
-        {/*    errors={errors}*/}
-        {/*    name={name}*/}
-        {/*    render={({ message }) => {*/}
-        {/*      return (*/}
-        {/*        <View className=" pl-2 pt-1 ">*/}
-        {/*          <Text className={`${textXsmallRegular} text-rose-500`}>*/}
-        {/*            {message}*/}
-        {/*          </Text>*/}
-        {/*        </View>*/}
-        {/*      )*/}
-        {/*    }}*/}
-        {/*  />*/}
-        {/*)}*/}
+        {Boolean(hasError) && (
+          <ErrorMessage
+            errors={errors}
+            name={name}
+            render={({ message }) => {
+              return (
+                <View className=" pl-2 pt-1 ">
+                  <Text className={`${textXsmallRegular} text-rose-500`}>
+                    {message}
+                  </Text>
+                </View>
+              )
+            }}
+          />
+        )}
       </View>
     )
   }
