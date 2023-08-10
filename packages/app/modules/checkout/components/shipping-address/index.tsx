@@ -34,9 +34,13 @@ const ShippingAddress = () => {
         {({ register, formState }) => {
           const { errors, touchedFields, isSubmitting } = formState
 
+          console.log('register', register)
+          console.log('formState', formState)
+          // return null
           return (
             <Stack space={2} className="bg-white">
               <Input
+                removeAnimation
                 label="Email"
                 {...register('email', {
                   required: 'Email is required',
@@ -49,6 +53,7 @@ const ShippingAddress = () => {
               />
               <Columns space={2}>
                 <Input
+                  removeAnimation
                   label="First name"
                   {...register('shipping_address.first_name', {
                     required: 'First name is required',
@@ -59,6 +64,7 @@ const ShippingAddress = () => {
                   isSubmitting={isSubmitting}
                 />
                 <Input
+                  removeAnimation
                   label="Last name"
                   {...register('shipping_address.last_name', {
                     required: 'Last name is required',
@@ -70,6 +76,7 @@ const ShippingAddress = () => {
                 />
               </Columns>
               <Input
+                removeAnimation
                 label="Company"
                 {...register('shipping_address.company')}
                 autoComplete="organization"
@@ -78,6 +85,7 @@ const ShippingAddress = () => {
                 isSubmitting={isSubmitting}
               />
               <Input
+                removeAnimation
                 label="Address"
                 {...register('shipping_address.address_1', {
                   required: 'Address is required',
@@ -88,6 +96,7 @@ const ShippingAddress = () => {
                 isSubmitting={isSubmitting}
               />
               <Input
+                removeAnimation
                 label="Apartments, suite, etc."
                 {...register('shipping_address.address_2')}
                 autoComplete="address-line2"
@@ -97,6 +106,7 @@ const ShippingAddress = () => {
               />
               <Columns space={2}>
                 <Input
+                  removeAnimation
                   label="Postal code"
                   {...register('shipping_address.postal_code', {
                     required: 'Postal code is required',
@@ -107,6 +117,7 @@ const ShippingAddress = () => {
                   isSubmitting={isSubmitting}
                 />
                 <Input
+                  removeAnimation
                   label="City"
                   {...register('shipping_address.city', {
                     required: 'City is required',
@@ -126,6 +137,7 @@ const ShippingAddress = () => {
               {/*  touched={touchedFields}*/}
               {/*/>*/}
               <Input
+                removeAnimation
                 label="State / Province"
                 {...register('shipping_address.province')}
                 autoComplete="address-level1"
@@ -133,6 +145,7 @@ const ShippingAddress = () => {
                 touched={touchedFields}
               />
               <Input
+                removeAnimation
                 label="Phone"
                 {...register('shipping_address.phone')}
                 autoComplete="tel"
