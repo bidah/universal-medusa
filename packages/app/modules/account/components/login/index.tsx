@@ -4,7 +4,7 @@ import Button from 'app/modules/common/components/button'
 import Input from 'app/modules/common/components/input'
 import { useRouter } from 'solito/router'
 import { useState } from 'react'
-import { View, Text, Pressable } from 'app/design'
+import { View, Text, Pressable, Stack } from 'app/design'
 
 import { FieldValues, useForm, FormProvider } from 'react-hook-form'
 
@@ -50,7 +50,7 @@ const Login = () => {
           Sign in to access an enhanced shopping experience.
         </Text>
         <View className="w-full">
-          <View className="flex w-full flex-col gap-y-2">
+          <Stack space={2} className=" flex w-full flex-col">
             <Input
               label="Email"
               {...register('email', { required: 'Email is required' })}
@@ -66,7 +66,7 @@ const Login = () => {
               errors={errors}
               isSubmitting={isSubmitting}
             />
-          </View>
+          </Stack>
           {authError && (
             <View>
               <Text className="text-small-regular w-full text-rose-500">

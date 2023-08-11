@@ -2,12 +2,13 @@ import { medusaClient } from 'app/lib/config'
 import { LOGIN_VIEW, useAccount } from 'app/lib/context/account-context'
 import Button from 'app/modules/common/components/button'
 import Input from 'app/modules/common/components/input'
-import Link from 'next/link'
 import { useRouter } from 'solito/router'
 import { useState } from 'react'
-import { View, Text } from 'app/design'
+import { View, Text, Stack, Pressable, Link } from 'app/design'
 
 import { FieldValues, FormProvider, useForm } from 'react-hook-form'
+import UnderlineLink from '../../../common/components/underline-link'
+import { textLargeSemi } from '../../../../design/tailwind/custom-css-classes'
 
 interface RegisterCredentials extends FieldValues {
   first_name: string
@@ -49,8 +50,8 @@ const Register = () => {
 
   return (
     <FormProvider {...methods}>
-      <View className="mt-12 flex max-w-sm flex-col items-center">
-        <Text className="text-large-semi mb-6 uppercase">
+      <View className="web:max-w-sm ios:mx-2 web:mx-auto web:mt-12 web:items-center flex flex-col">
+        <Text className={`${textLargeSemi} mb-6 text-center uppercase`}>
           Become a Acme Member
         </Text>
         <Text className="text-base-regular mb-4 text-center text-gray-700">
@@ -58,7 +59,7 @@ const Register = () => {
           shopping experience.
         </Text>
         <View className="flex w-full flex-col">
-          <View className="flex w-full flex-col gap-y-2">
+          <Stack space={2} className="flex w-full flex-col ">
             <Input
               label="First name"
               {...register('first_name', {
@@ -99,7 +100,7 @@ const Register = () => {
               errors={errors}
               isSubmitting={isSubmitting}
             />
-          </View>
+          </Stack>
           {authError && (
             <View>
               <Text className="text-small-regular w-full text-rose-500">
@@ -109,30 +110,24 @@ const Register = () => {
             </View>
           )}
           {/*TODO: Add privacy policy and terms of use back in*/}
-          {/*<Text className="text-small-regular mt-6 text-center text-gray-700">*/}
-          {/*  By creating an account, you agree to Acme&apos;s{' '}*/}
-          {/*  <Link href="/content/privacy-policy">*/}
-          {/*    <a className="underline">Privacy Policy</a>*/}
-          {/*  </Link>{' '}*/}
-          {/*  and{' '}*/}
-          {/*  <Link href="/content/terms-of-use">*/}
-          {/*    <a className="underline">Terms of Use</a>*/}
-          {/*  </Link>*/}
-          {/*  .*/}
-          {/*</Text>*/}
+          <Text className="text-small-regular mb-3 mt-6 text-center text-gray-700">
+            By creating an account, you agree to Acme&apos;s{' '}
+            <Link href={''}>
+              <Text className="underline">Privacy Policy</Text>
+            </Link>
+            <Link href={''}>
+              <Text className="underline">Terms of Use</Text>
+            </Link>
+          </Text>
           <Button className="mt-6" onPress={onSubmit}>
             Join
           </Button>
         </View>
         <Text className="text-small-regular mt-6 text-center text-gray-700">
           Already a member?{' '}
-          <Button
-            onPress={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
-            style="underline"
-          >
-            Sign in
-          </Button>
-          .
+          <Pressable onPress={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}>
+            <Text className={'underline'}>Sign in</Text>
+          </Pressable>
         </Text>
       </View>
     </FormProvider>
