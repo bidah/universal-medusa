@@ -108,7 +108,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )}
                     ref={inputRef}
                   />
-                  <View style={{ top: 0, position: 'absolute' }}>
+                  <View style={{ top: 7, position: 'absolute' }}>
                     <MotiPressable
                       onPress={() => {
                         inputRef.current?.focus()
@@ -124,28 +124,31 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                         display: 'flex',
                         flexDirection: 'row',
                       }}
-                      animate={
-                        !removeAnimation
-                          ? {
-                              ...{
-                                opacity: 1,
-                                top: isFocused || value?.length ? 6 : 17,
-                              },
-                            }
-                          : {}
-                      }
+                      // animate={
+                      //   !removeAnimation
+                      //     ? {
+                      //         ...{
+                      //           opacity: 1,
+                      //           top: isFocused || value?.length ? 6 : 17,
+                      //         },
+                      //       }
+                      //     : {}
+                      // }
                       transition={{
                         type: 'timing',
                       }}
                     >
-                      <MotiText
-                        animate={{
-                          fontSize: isFocused || value?.length ? 10 : 14,
-                        }}
-                        style={{ color: colors.gray[500] }}
-                      >
+                      <Text style={{ color: colors.gray[500], fontSize: 11 }}>
                         {label}{' '}
-                      </MotiText>
+                      </Text>
+                      {/*<MotiText*/}
+                      {/*  animate={{*/}
+                      {/*    fontSize: isFocused || value?.length ? 10 : 14,*/}
+                      {/*  }}*/}
+                      {/*  style={{ color: colors.gray[500] }}*/}
+                      {/*>*/}
+                      {/*  {label}{' '}*/}
+                      {/*</MotiText>*/}
                       {required && <Text className="text-rose-500">*</Text>}
                     </MotiPressable>
                   </View>
