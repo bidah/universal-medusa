@@ -3,6 +3,7 @@ import ChevronDown from 'app/modules/common/icons/chevron-down'
 import MapPin from 'app/modules/common/icons/map-pin'
 import Package from 'app/modules/common/icons/package'
 import User from 'app/modules/common/icons/user'
+import { useAccount } from 'app/lib/context/account-context'
 import { formatAmount } from 'medusa-react'
 import { View, Pressable, Text, Link } from 'app/design'
 import {
@@ -19,6 +20,7 @@ type OverviewProps = {
 }
 
 const Overview = ({ orders, customer }: OverviewProps) => {
+  const { handleLogout } = useAccount()
   return (
     <>
       <View>
@@ -26,7 +28,7 @@ const Overview = ({ orders, customer }: OverviewProps) => {
           <Text className={`${textXlSemi}  mb-4 px-2 `}>
             Hello {customer?.first_name}
           </Text>
-          <View className={textBaseRegular}>
+          <View className={`${textBaseRegular} flex `}>
             <View>
               <Link href="/account/profile">
                 <View className="flex flex-row items-center justify-between border-b border-gray-200 px-2 py-4">
@@ -158,6 +160,14 @@ const Overview = ({ orders, customer }: OverviewProps) => {
             </View>
           </View>
         </View>
+
+        <Pressable className={'web:hidden'} onPress={handleLogout}>
+          <View className="mt-5 flex w-[100%] flex-row justify-center border border-gray-200 px-2 py-4">
+            <View className="">
+              <Text>Logout</Text>
+            </View>
+          </View>
+        </Pressable>
       </View>
     </>
   )
