@@ -12,13 +12,13 @@ const EmptyCartMessage = () => {
         Your shopping bag is empty
       </Text>
       <Text
-        className={`${textBaseRegular} mt-4 mb-6 max-w-[32rem] text-center`}
+        className={`${textBaseRegular} mb-6 mt-4 max-w-[32rem] text-center`}
       >
         You don&apos;t have anything in your bag. Let&apos;s change that, use
         the link below to start browsing our products.
       </Text>
       <View>
-        {/*<UnderlineLink href="/store">Explore products</UnderlineLink>*/}
+        <UnderlineLink href="/store">Explore products</UnderlineLink>
       </View>
     </View>
   )
