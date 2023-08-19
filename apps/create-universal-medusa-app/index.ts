@@ -206,6 +206,8 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
       resolvedProjectPath,
       useYarn ? 'yarn' : 'npm'
     )
+
+    // add on this line function that will remove from the root the 'docs' and 'create-universal-medusa-app' folders
     // await install(resolvedProjectPath, null, { packageManager, isOnline })
   } catch (e: any) {
     console.error(
@@ -216,6 +218,21 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
     )
     process.exit(1)
   }
+
+  
+  console.log('Removing extra folders. This might take a couple of seconds.')
+  console.log()
+  try {
+    await removeDirectories(resolvedProjectPath);
+  } catch (e: any) {
+    console.error(
+      '[universal medusa] error removing extra folders from monorepo',
+      e?.message
+    )
+    process.exit(1)
+  }
+
+  // 
 
   console.log(
     `${chalk.green('Success!')} Created ${projectName} at ${projectPath}`
@@ -268,5 +285,25 @@ export async function installDependenciesAsync(
     await yarn.installAsync()
   } else {
     await new PackageManager.NpmPackageManager(options).installAsync()
+  }
+}
+
+export async function removeDirectories(rootDir: string) {
+  try {
+    // Remove 'docs' and 'create-universal-medusa-app' directories
+    fs.rmdirSync(path.join(rootDir, 'docs'), { recursive: true });
+    fs.rmdirSync(path.join(rootDir, 'create-universal-medusa-app'), { recursive: true });
+  } catch (e) {
+    console.error('Error while removing directories:', e);
+  }
+}
+
+export async function removeDirectoriesAsync(rootDir: string) {
+  try {
+    // Remove 'docs' and 'create-universal-medusa-app' directories
+    await fs.promises.rmdir(path.join(rootDir, 'docs'), { recursive: true });
+    await fs.promises.rmdir(path.join(rootDir, 'create-universal-medusa-app'), { recursive: true });
+  } catch (e) {
+    console.error('Error while removing directories:', e);
   }
 }
