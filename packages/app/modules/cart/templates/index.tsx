@@ -8,7 +8,6 @@ import ItemsTemplate from './items'
 import Summary from './summary'
 import { View } from 'app/design'
 import { contentContainer } from '../../../design/tailwind/custom-css-classes'
-import { Platform } from 'react-native'
 
 const CartTemplate = () => {
   const { cart } = useCart()
