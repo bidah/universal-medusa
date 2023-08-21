@@ -240,6 +240,7 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
   console.log()
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}web`))
   console.log('    Starts the development server for the Next.js site.')
+  console.log()
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}native`))
   console.log('    Starts the metro bundler for Expo app')
   console.log()

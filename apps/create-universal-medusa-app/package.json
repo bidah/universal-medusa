@@ -1,6 +1,6 @@
 {
   "name": "create-universal-medusa-app",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "devDependencies": {
     "@types/async-retry": "1.4.2",
     "@types/cross-spawn": "^6.0.2",
