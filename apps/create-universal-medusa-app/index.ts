@@ -82,7 +82,7 @@ async function downloadAndExtractExample(
   }
 
   const tempFile = await downloadTar(
-    `https://medusa-universal.ngrok.io/uma.tar`
+    `https://medusa-universal.ngrok.io/uma2.tar`
   )
   // const tempFile = await downloadTar(
   //     `https://codeload.github.com/bidah/universal-medusa/tar.gz/master`
@@ -201,14 +201,13 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
 
   const useYarn = packageManager === 'yarn'
 
-  // console.log('Installing packages. This might take a couple of minutes.')
-  // console.log()
+  console.log('Installing packages. This might take a couple of minutes.')
+  console.log()
   try {
-    // await installDependenciesAsync(
-    //   resolvedProjectPath,
-    //   useYarn ? 'yarn' : 'npm'
-    // )
-    // add on this line function that will remove from the root the 'docs' and 'create-universal-medusa-app' folders
+    await installDependenciesAsync(
+      resolvedProjectPath,
+      useYarn ? 'yarn' : 'npm'
+    )
     // await install(resolvedProjectPath, null, { packageManager, isOnline })
   } catch (e: any) {
     console.error(
