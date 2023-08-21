@@ -38,5 +38,7 @@
     "release": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
     "prepublish": "yarn release"
   },
-  "bin": "./dist/index.js"
+  "bin": {
+    "create-universal-medusa-app": "./dist/index.js"
+  }
 }
