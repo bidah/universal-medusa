@@ -81,7 +81,9 @@ async function downloadAndExtractExample(
     throw new Error('This is an internal example for testing the CLI.')
   }
 
-  const tempFile = await downloadTar(`http://192.168.101.2:61758/v0.0.1.tar.gz`)
+  const tempFile = await downloadTar(
+    `https://medusa-universal.ngrok.io/uma.tar`
+  )
   // const tempFile = await downloadTar(
   //     `https://codeload.github.com/bidah/universal-medusa/tar.gz/master`
   // )
@@ -199,14 +201,13 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
 
   const useYarn = packageManager === 'yarn'
 
-  console.log('Installing packages. This might take a couple of minutes.')
-  console.log()
+  // console.log('Installing packages. This might take a couple of minutes.')
+  // console.log()
   try {
-    await installDependenciesAsync(
-      resolvedProjectPath,
-      useYarn ? 'yarn' : 'npm'
-    )
-
+    // await installDependenciesAsync(
+    //   resolvedProjectPath,
+    //   useYarn ? 'yarn' : 'npm'
+    // )
     // add on this line function that will remove from the root the 'docs' and 'create-universal-medusa-app' folders
     // await install(resolvedProjectPath, null, { packageManager, isOnline })
   } catch (e: any) {
@@ -219,11 +220,10 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
     process.exit(1)
   }
 
-  
   console.log('Removing extra folders. This might take a couple of seconds.')
   console.log()
   try {
-    await removeDirectories(resolvedProjectPath);
+    await removeDirectories(resolvedProjectPath)
   } catch (e: any) {
     console.error(
       '[universal medusa] error removing extra folders from monorepo',
@@ -232,7 +232,7 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
     process.exit(1)
   }
 
-  // 
+  //
 
   console.log(
     `${chalk.green('Success!')} Created ${projectName} at ${projectPath}`
@@ -242,10 +242,12 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}web`))
   console.log('    Starts the development server for the Next.js site.')
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}native`))
+  console.log('    Starts the metro bundler for Expo app')
   console.log()
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}medusa`))
+  console.log('    Starts the development server for the Medusa backend')
   console.log()
-  console.log('We suggest that you begin with medusa configuration')
+  console.log('We suggest that you begin with medusa configuration:')
   console.log('Create postgres db named `medusastore` and then seed db:')
   console.log()
   console.log(chalk.cyan('  cd'), projectName)
@@ -291,19 +293,23 @@ export async function installDependenciesAsync(
 export async function removeDirectories(rootDir: string) {
   try {
     // Remove 'docs' and 'create-universal-medusa-app' directories
-    fs.rmdirSync(path.join(rootDir, 'docs'), { recursive: true });
-    fs.rmdirSync(path.join(rootDir, 'create-universal-medusa-app'), { recursive: true });
+    fs.rmdirSync(path.join(rootDir, '/apps/docs'), { recursive: true })
+    fs.rmdirSync(path.join(rootDir, '/apps/create-universal-medusa-app'), {
+      recursive: true,
+    })
   } catch (e) {
-    console.error('Error while removing directories:', e);
+    console.error('Error while removing directories:', e)
   }
 }
 
 export async function removeDirectoriesAsync(rootDir: string) {
   try {
     // Remove 'docs' and 'create-universal-medusa-app' directories
-    await fs.promises.rmdir(path.join(rootDir, 'docs'), { recursive: true });
-    await fs.promises.rmdir(path.join(rootDir, 'create-universal-medusa-app'), { recursive: true });
+    await fs.promises.rmdir(path.join(rootDir, 'docs'), { recursive: true })
+    await fs.promises.rmdir(path.join(rootDir, 'create-universal-medusa-app'), {
+      recursive: true,
+    })
   } catch (e) {
-    console.error('Error while removing directories:', e);
+    console.error('Error while removing directories:', e)
   }
 }
