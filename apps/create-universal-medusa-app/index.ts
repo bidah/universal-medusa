@@ -82,7 +82,7 @@ async function downloadAndExtractExample(
   }
 
   const tempFile = await downloadTar(
-    `https://medusa-universal.ngrok.io/uma2.tar`
+    `https://github.com/bidah/universal-medusa/archive/refs/tags/v0.2.3.tar.gz`
   )
   // const tempFile = await downloadTar(
   //     `https://codeload.github.com/bidah/universal-medusa/tar.gz/master`
