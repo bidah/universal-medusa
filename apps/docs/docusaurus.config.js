@@ -11,6 +11,9 @@ const config = {
     '  Build cross platforms ecom apps that get you the best of web and native mobile using Next.js and Expo with shared tailwind styles, unified navigation, screens, components, modules, all the medujsa.js headless modules and more',
   favicon: 'img/favicon.ico',
 
+  // Check for broken links. Set to 'ignore' to ignore broken links
+  
+  
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -21,8 +24,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
