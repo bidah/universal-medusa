@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[906],{2119:i=>{i.exports=JSON.parse('{"title":"Discoverability","slug":"/category/discoverability","permalink":"/category/discoverability","navigation":{"previous":{"title":"Universal Links","permalink":"/navigation/deep-links"},"next":{"title":"SEO","permalink":"/navigation/discoverability/SEO"}}}')}}]);
