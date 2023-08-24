@@ -1,6 +1,6 @@
 {
   "name": "create-universal-medusa-app",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "devDependencies": {
     "@types/async-retry": "1.4.2",
     "@types/cross-spawn": "^6.0.2",
@@ -38,7 +38,5 @@
     "release": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
     "prepublish": "yarn release"
   },
-  "bin": {
-    "create-universal-medusa-app": "./dist/index.js"
-  }
+  "bin": "./dist/index.js"
 }
