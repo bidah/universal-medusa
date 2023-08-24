@@ -99,6 +99,7 @@ async function downloadAndExtractExample(
   await tar.x({
     file: tempFile,
     cwd: root,
+    strip: 1
   })
 
   fs.unlinkSync(tempFile)
