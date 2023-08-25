@@ -1,4 +1,8 @@
-# Universal Medusa
+# Universal Medusa ⚛️ Multi platform e-commerce development
+
+Get a starter codebase with a complete e-commerce app that runs on both mobile and web. Built w/ @expo, @nextjs & @medusajs
+
+Try it out now w/  `npx create-universal-medusa-app` Docs @ https://dub.sh/uma
 
 Build cross platforms e com apps with [Medusa.js](http://medusajs.com) that gets you the best of web and native mobile using [Next.js](http://nextjs.org) and [Expo](https://expo.dev).
 
@@ -21,14 +25,14 @@ Get started by running the following to create a new project with a starter kit 
 npx create-universal-medusa-app my-app
 ```
 
-| The starter is a port of Medusa.js Next.js starter. So you get all the same features out of the box.
-You get a Expo, Next and default medusa backend in a monorepo
+ℹ️ The starter is a port of Medusa.js Next.js starter. So you get all the same features out of the box.
+You get a Expo, Next and default Medusa backend in a monorepo
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
 ## Start projects (mobile, web and Medusa.js backend)
 
-| `yarn install` already ran with the `create-universal-medusa-app` command
+ℹ️ `yarn install` already ran with the `create-universal-medusa-app` command
 
 ### Run Expo client
 
@@ -47,7 +51,7 @@ eas login
 #### Configure project for eas builds
 Create your dev client to be run on your simulator
 
-| You need to rerun build whenever you add native dependencies to your `expo` project
+ℹ️ You need to rerun build whenever you add native dependencies to your `expo` project
 
 ```bash
 eas build --profile development-simulator --platform ios
@@ -68,7 +72,7 @@ yarn web
 
 Run the medusa backend
 
-| You need to have a local postgres database already created and running
+ℹ️ You need to have a local postgres database already created and running
 
 ```bash
 # first time only you need to seed db
