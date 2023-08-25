@@ -71,7 +71,7 @@ yarn web
 ℹ️ You need to have a local postgres database already created and running
 
 ```bash
-# first time only you need to seed db
+# First time only. You need to seed db
 yarn medusa:seed
 
 # then start the backend
