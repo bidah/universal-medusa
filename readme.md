@@ -4,7 +4,7 @@ Build cross platforms e-commerce apps with [Medusa.js](http://medusajs.com) that
 
 You get a starter codebase with a complete e-commerce app that runs on both mobile and web. You get code reuse with shared screens, components, modules, providers, style system using [Nativewind](https://nativewind.dev), unified navigation with [Solito](https://solito.dev) and [Expo Router](https://expo.github.io/router/docs/) and much, much more.
 
-📄 Docs: [https://dub.sh/uma](https://dub.sh/uma)
+📄 Docs: [https://dub.sh/universalmedusa](https://dub.sh/universalmedusa)
 
 ---
 
