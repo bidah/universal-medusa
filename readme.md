@@ -2,11 +2,9 @@
 
 Get a starter codebase with a complete e-commerce app that runs on both mobile and web. Built w/ @expo, @nextjs & @medusajs
 
-Try it out now w/  `npx create-universal-medusa-app` Docs @ https://dub.sh/uma
+Build cross platforms e-commerce apps with [Medusa.js](http://medusajs.com) that gets you the best of web and native mobile using [Next.js](http://nextjs.org) and [Expo](https://expo.dev).
 
-Build cross platforms e com apps with [Medusa.js](http://medusajs.com) that gets you the best of web and native mobile using [Next.js](http://nextjs.org) and [Expo](https://expo.dev).
-
-You get a development setup with shared screens, components, modules, providers, style system using [Nativewind](https://nativewind.dev), unified navigation with [Solito](https://solito.dev) and [Expo Router](https://expo.github.io/router/docs/) and much, much more.
+You get a starter codebase with a complete e-commerce app that runs on both mobile and web. You get code reuse with shared screens, components, modules, providers, style system using [Nativewind](https://nativewind.dev), unified navigation with [Solito](https://solito.dev) and [Expo Router](https://expo.github.io/router/docs/) and much, much more.
 
 📄 Docs: [https://dub.sh/uma](https://dub.sh/uma)
 
