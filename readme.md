@@ -21,18 +21,14 @@ Get started by running the following to create a new project with a starter kit 
 npx create-universal-medusa-app my-app
 ```
 
-:::note
-The starter is a port of Medusa.js Next.js starter. So you get all the same features out of the box.
+| The starter is a port of Medusa.js Next.js starter. So you get all the same features out of the box.
 You get a Expo, Next and default medusa backend in a monorepo
-:::
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
 ## Start projects (mobile, web and Medusa.js backend)
 
-:::note
-`yarn install` already ran with the `create-universal-medusa-app` command
-:::
+| `yarn install` already ran with the `create-universal-medusa-app` command
 
 ### Run Expo client
 
@@ -51,9 +47,7 @@ eas login
 #### Configure project for eas builds
 Create your dev client to be run on your simulator
 
-:::note
-You need to rerun build whenever you add native dependencies to your `expo` project
-:::
+| You need to rerun build whenever you add native dependencies to your `expo` project
 
 ```bash
 eas build --profile development-simulator --platform ios
@@ -74,9 +68,8 @@ yarn web
 
 Run the medusa backend
 
-:::note
-You need to have a local postgres database already created and running
-:::
+| You need to have a local postgres database already created and running
+
 ```bash
 # first time only you need to seed db
 yarn medusa:seed
