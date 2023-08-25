@@ -66,7 +66,7 @@ yarn native
 yarn web
 ```
 
-Run the medusa backend
+### Run the medusa backend
 
 ℹ️ You need to have a local postgres database already created and running
 
