@@ -30,6 +30,7 @@
   "dependencies": {
     "@expo/package-manager": "^0.0.50",
     "inquirer": "^9.2.10",
+    "nanoid": "^4.0.2",
     "ora": "^7.0.1",
     "pg": "^8.11.3",
     "ts-node": "10.7.0",

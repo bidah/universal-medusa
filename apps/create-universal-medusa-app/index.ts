@@ -20,6 +20,7 @@ import inquirer from 'inquirer'
 import formatConnectionString from './format-connection-string.js'
 import ora, { Ora } from 'ora'
 import { getCurrentOs } from './get-current-os.js'
+import { nanoid } from "nanoid"
 
 import packageJson from './package.json'
 const pipeline = promisify(Stream.pipeline)
@@ -245,7 +246,7 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
   // }
 
   // create postgres database
-  const dbName = 'medusastore-123'
+  const dbName = `medusa-${nanoid(4)}`
   const { client, dbConnectionString } = await getDbClientAndCredentials({
     dbName,
   })
