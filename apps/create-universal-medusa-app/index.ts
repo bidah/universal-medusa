@@ -469,7 +469,7 @@ export async function runCreateDb({
       db: dbName,
     })
 
-    const envFile = path.join(resolvedProjectPath, '.env.template');
+    const envFile = path.join(resolvedProjectPath, 'apps/medusa-store/.env.template');
     const envConfig = fs.readFileSync(envFile, 'utf8');
     const updatedEnvConfig = envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`;
     fs.writeFileSync(envFile, updatedEnvConfig);
