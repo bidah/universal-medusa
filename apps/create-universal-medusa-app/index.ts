@@ -13,6 +13,13 @@ import { Stream } from 'stream'
 import tar from 'tar'
 import { promisify } from 'util'
 import validateProjectName from 'validate-npm-package-name'
+import { EOL } from 'os'
+import pg from 'pg'
+import postgresClient from './postgres-client.js'
+import inquirer from 'inquirer'
+import formatConnectionString from './format-connection-string.js'
+import ora, { Ora } from 'ora'
+import { getCurrentOs } from './get-current-os.js'
 
 import packageJson from './package.json'
 const pipeline = promisify(Stream.pipeline)
@@ -22,6 +29,11 @@ type RepoInfo = {
   name: string
   branch: string
   filePath: string
+}
+
+type CreateDbOptions = {
+  client: pg.Client
+  db: string
 }
 
 let projectPath: string = ''
@@ -99,7 +111,7 @@ async function downloadAndExtractExample(
   await tar.x({
     file: tempFile,
     cwd: root,
-    strip: 1
+    strip: 1,
   })
 
   fs.unlinkSync(tempFile)
@@ -204,35 +216,53 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
 
   console.log('Installing packages. This might take a couple of minutes.')
   console.log()
-  try {
-    await installDependenciesAsync(
-      resolvedProjectPath,
-      useYarn ? 'yarn' : 'npm'
-    )
-    // await install(resolvedProjectPath, null, { packageManager, isOnline })
-  } catch (e: any) {
-    console.error(
-      '[universal medusa] error installing node_modules with ' +
-        packageManager +
-        '\n',
-      e?.message
-    )
-    process.exit(1)
-  }
+  // try {
+  //   await installDependenciesAsync(
+  //     resolvedProjectPath,
+  //     useYarn ? 'yarn' : 'npm'
+  //   )
+  //   // await install(resolvedProjectPath, null, { packageManager, isOnline })
+  // } catch (e: any) {
+  //   console.error(
+  //     '[universal medusa] error installing node_modules with ' +
+  //       packageManager +
+  //       '\n',
+  //     e?.message
+  //   )
+  //   process.exit(1)
+  // }
 
-  console.log('Removing extra folders. This might take a couple of seconds.')
-  console.log()
-  try {
-    await removeDirectories(resolvedProjectPath)
-  } catch (e: any) {
-    console.error(
-      '[universal medusa] error removing extra folders from monorepo',
-      e?.message
-    )
-    process.exit(1)
-  }
+  // console.log('Removing extra folders. This might take a couple of seconds.')
+  // console.log()
+  // try {
+  //   await removeDirectories(resolvedProjectPath)
+  // } catch (e: any) {
+  //   console.error(
+  //     '[universal medusa] error removing extra folders from monorepo',
+  //     e?.message
+  //   )
+  //   process.exit(1)
+  // }
 
-  //
+  // create postgres database
+  const dbName = 'medusastore-123'
+  const { client, dbConnectionString } = await getDbClientAndCredentials({
+    dbName,
+  })
+  const spinner = ora()
+  try {
+    await runCreateDb({
+      client,
+      dbName,
+      spinner,
+      resolvedProjectPath
+    })
+  } catch (e) {
+    spinner.stop()
+    console.error(
+      chalk.red(`An error occurred while trying to create your database: ${e}`)
+    )
+  }
 
   console.log(
     `${chalk.green('Success!')} Created ${projectName} at ${projectPath}`
@@ -312,5 +342,141 @@ export async function removeDirectoriesAsync(rootDir: string) {
     })
   } catch (e) {
     console.error('Error while removing directories:', e)
+  }
+}
+
+export default async function createDb({ client, db }: CreateDbOptions) {
+  await client.query(`CREATE DATABASE "${db}"`)
+}
+
+
+export async function getDbClientAndCredentials({
+  dbName = '',
+  dbUrl = '',
+}): Promise<{
+  client: pg.Client
+  dbConnectionString: string
+}> {
+  if (dbName) {
+    return await getForDbName(dbName)
+  } else {
+    return await getForDbUrl(dbUrl)
+  }
+}
+
+async function getForDbUrl(dbUrl: string): Promise<{
+  client: pg.Client
+  dbConnectionString: string
+}> {
+  let client!: pg.Client
+
+  try {
+    client = await postgresClient({
+      connectionString: dbUrl,
+    })
+  } catch (e) {
+    console.error(
+      chalk.red(
+        `Couldn't connect to PostgreSQL using the database URL you passed. Make sure it's correct and try again.`
+      )
+    )
+  }
+
+  return {
+    client,
+    dbConnectionString: dbUrl,
+  }
+}
+async function getForDbName(dbName: string): Promise<{
+  client: pg.Client
+  dbConnectionString: string
+}> {
+  let client!: pg.Client
+  let postgresUsername = 'postgres'
+  let postgresPassword = ''
+
+  try {
+    client = await postgresClient({
+      user: postgresUsername,
+      password: postgresPassword,
+    })
+  } catch (e) {
+    // ask for the user's postgres credentials
+    const answers = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'postgresUsername',
+        message: 'Enter your Postgres username',
+        default: 'postgres',
+        validate: (input) => {
+          return typeof input === 'string' && input.length > 0
+        },
+      },
+      {
+        type: 'password',
+        name: 'postgresPassword',
+        message: 'Enter your Postgres password',
+      },
+    ])
+
+    postgresUsername = answers.postgresUsername
+    postgresPassword = answers.postgresPassword
+
+    try {
+      client = await postgresClient({
+        user: postgresUsername,
+        password: postgresPassword,
+      })
+    } catch (e) {
+      console.error(
+        chalk.red(
+          `Couldn't connect to PostgreSQL. Make sure you have PostgreSQL installed and the credentials you provided are correct.${EOL}${EOL}You can learn how to install PostgreSQL here: https://docs.medusajs.com/development/backend/prepare-environment?os=${getCurrentOs()}#postgresql${EOL}${EOL}If you keep running into this issue despite having PostgreSQL installed, please check out our troubleshooting guidelines: https://docs.medusajs.com/troubleshooting/database-error`
+        )
+      )
+    }
+  }
+
+  // format connection string
+  const dbConnectionString = formatConnectionString({
+    user: postgresUsername,
+    password: postgresPassword,
+    host: client!.host,
+    db: dbName,
+  })
+
+  return {
+    client,
+    dbConnectionString,
+  }
+}
+
+export async function runCreateDb({
+  client,
+  dbName,
+  spinner,
+  resolvedProjectPath
+}: {
+  client: pg.Client
+  dbName: string
+  spinner: Ora
+  resolvedProjectPath: string
+}) {
+  // create postgres database
+  try {
+    await createDb({
+      client,
+      db: dbName,
+    })
+
+    const envFile = path.join(resolvedProjectPath, '.env.template');
+    const envConfig = fs.readFileSync(envFile, 'utf8');
+    const updatedEnvConfig = envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`;
+    fs.writeFileSync(envFile, updatedEnvConfig);
+    
+    spinner.succeed(`Database ${dbName} created successfully.`)
+    spinner.succeed(`Added database var POSTGRES_URL to .env file successfully. `)
+  } catch (error) {
+    spinner.fail(`Failed to create database ${dbName}.`)
+    throw error
   }
 }
