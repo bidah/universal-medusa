@@ -1,5 +1,5 @@
 {
-  "name": "solito-with-tailwind",
+  "name": "universal-medusa",
   "private": true,
   "workspaces": [
     "apps/*",
