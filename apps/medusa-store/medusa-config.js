@@ -31,7 +31,7 @@ const STORE_CORS =
   'http://localhost:3000,http://localhost:8000,http://medusa-store.ngrok.io'
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || 'postgres://localhost/medusastore'
+  process.env.POSTGRES_URL || 'postgres://localhost/medusastore'
 
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
 
