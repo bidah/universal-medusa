@@ -475,7 +475,11 @@ export async function runCreateDb({
     const envConfig = fs.readFileSync(envFile, 'utf8')
     const updatedEnvConfig =
       envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`
-    fs.writeFileSync(envFile, updatedEnvConfig)
+    spinner.succeed(`Made copy of .env.template file. Saved as .env`)
+    fs.writeFileSync(
+      path.join(resolvedProjectPath, 'apps/medusa-store/.env'),
+      updatedEnvConfig
+    )
 
     spinner.succeed(`Database ${dbName} created successfully.`)
     spinner.succeed(
