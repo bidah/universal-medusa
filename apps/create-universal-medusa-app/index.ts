@@ -279,14 +279,17 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? '' : 'run '}medusa`))
   console.log('    Starts the development server for the Medusa backend')
   console.log()
-  console.log('We suggest that you begin with medusa configuration:')
-  console.log('Create postgres db named `medusastore` and then seed db:')
+  console.log(
+    'We suggest that you begin your medusa configuration by seeding your newly created database:'
+  )
   console.log()
   console.log(chalk.cyan('  cd'), projectName)
   console.log(
     `  ${chalk.cyan(`${packageManager} ${useYarn ? '' : 'run '}medusa:seed`)}`
   )
   console.log()
+  console.log()
+  process.exit(0)
 }
 
 run()
