@@ -19,10 +19,10 @@ import postgresClient from './postgres-client.js'
 import inquirer from 'inquirer'
 import formatConnectionString from './format-connection-string.js'
 import ora, { Ora } from 'ora'
-import { getCurrentOs } from './get-current-os.js'
-import { nanoid } from "nanoid"
+import { nanoid } from 'nanoid'
 
 import packageJson from './package.json'
+import { getCurrentOs } from './utils/get-current-os'
 const pipeline = promisify(Stream.pipeline)
 
 type RepoInfo = {
@@ -256,7 +256,7 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
       client,
       dbName,
       spinner,
-      resolvedProjectPath
+      resolvedProjectPath,
     })
   } catch (e) {
     spinner.stop()
@@ -349,7 +349,6 @@ export async function removeDirectoriesAsync(rootDir: string) {
 export default async function createDb({ client, db }: CreateDbOptions) {
   await client.query(`CREATE DATABASE "${db}"`)
 }
-
 
 export async function getDbClientAndCredentials({
   dbName = '',
@@ -455,7 +454,7 @@ export async function runCreateDb({
   client,
   dbName,
   spinner,
-  resolvedProjectPath
+  resolvedProjectPath,
 }: {
   client: pg.Client
   dbName: string
@@ -469,13 +468,19 @@ export async function runCreateDb({
       db: dbName,
     })
 
-    const envFile = path.join(resolvedProjectPath, 'apps/medusa-store/.env.template');
-    const envConfig = fs.readFileSync(envFile, 'utf8');
-    const updatedEnvConfig = envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`;
-    fs.writeFileSync(envFile, updatedEnvConfig);
-    
+    const envFile = path.join(
+      resolvedProjectPath,
+      'apps/medusa-store/.env.template'
+    )
+    const envConfig = fs.readFileSync(envFile, 'utf8')
+    const updatedEnvConfig =
+      envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`
+    fs.writeFileSync(envFile, updatedEnvConfig)
+
     spinner.succeed(`Database ${dbName} created successfully.`)
-    spinner.succeed(`Added database var POSTGRES_URL to .env file successfully. `)
+    spinner.succeed(
+      `Added database var POSTGRES_URL to .env file successfully. `
+    )
   } catch (error) {
     spinner.fail(`Failed to create database ${dbName}.`)
     throw error
