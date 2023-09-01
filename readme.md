@@ -68,7 +68,8 @@ yarn web
 
 ### Run the medusa backend
 
-ℹ️ If you have postgres installed on your machine database is already created and configured for you when running `npx create-universal-medusa-app` for the medusa backend and the seeding npm scripts to work right away
+
+ℹ️ If you have PostgreSQL installed on your machine, the database for Medusa backend is already created and configured for you when running `npx create-universal-medusa-app` 
 
 ```bash
 # First time only. You need to seed db
