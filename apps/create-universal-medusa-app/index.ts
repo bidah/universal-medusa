@@ -217,33 +217,33 @@ ${chalk.bold(chalk.red(`Please pick a different project name 🥸`))}`
 
   console.log('Installing packages. This might take a couple of minutes.')
   console.log()
-  // try {
-  //   await installDependenciesAsync(
-  //     resolvedProjectPath,
-  //     useYarn ? 'yarn' : 'npm'
-  //   )
-  //   // await install(resolvedProjectPath, null, { packageManager, isOnline })
-  // } catch (e: any) {
-  //   console.error(
-  //     '[universal medusa] error installing node_modules with ' +
-  //       packageManager +
-  //       '\n',
-  //     e?.message
-  //   )
-  //   process.exit(1)
-  // }
+  try {
+    await installDependenciesAsync(
+      resolvedProjectPath,
+      useYarn ? 'yarn' : 'npm'
+    )
+    // await install(resolvedProjectPath, null, { packageManager, isOnline })
+  } catch (e: any) {
+    console.error(
+      '[universal medusa] error installing node_modules with ' +
+        packageManager +
+        '\n',
+      e?.message
+    )
+    process.exit(1)
+  }
 
-  // console.log('Removing extra folders. This might take a couple of seconds.')
-  // console.log()
-  // try {
-  //   await removeDirectories(resolvedProjectPath)
-  // } catch (e: any) {
-  //   console.error(
-  //     '[universal medusa] error removing extra folders from monorepo',
-  //     e?.message
-  //   )
-  //   process.exit(1)
-  // }
+  console.log('Removing extra folders. This might take a couple of seconds.')
+  console.log()
+  try {
+    await removeDirectories(resolvedProjectPath)
+  } catch (e: any) {
+    console.error(
+      '[universal medusa] error removing extra folders from monorepo',
+      e?.message
+    )
+    process.exit(1)
+  }
 
   // create postgres database
   const dbName = `medusa-${nanoid(4)}`
@@ -476,6 +476,7 @@ export async function runCreateDb({
     const updatedEnvConfig =
       envConfig + `\nPOSTGRES_URL=postgres://localhost/${dbName}\n`
     spinner.succeed(`Made copy of .env.template file. Saved as .env`)
+
     fs.writeFileSync(
       path.join(resolvedProjectPath, 'apps/medusa-store/.env'),
       updatedEnvConfig
