@@ -4,7 +4,7 @@ import { Provider } from 'app/provider'
 export default function Layout() {
   return (
     <Provider>
-      <Stack>
+      <Stack screenOptions={{}}>
         <Stack.Screen
           name="(tabs)"
           options={{

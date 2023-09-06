@@ -6,6 +6,7 @@ export default function ConfirmedPage() {
       <Stack.Screen
         options={{
           title: `Order Details`,
+          headerTintColor: 'black',
         }}
       />
       <OrderDetailsScreen />
