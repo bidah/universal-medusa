@@ -75,6 +75,11 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            href: 'https://www.x.com/bidah',
+            label: 'X / Twitter',
+            position: 'right',
+          },
         ],
       },
       footer: {
