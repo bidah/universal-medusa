@@ -19,9 +19,11 @@ const nextConfig = {
     'react-native-reanimated',
     'nativewind',
     'react-native-gesture-handler',
+    'react-native-safe-area-context',
     '@mobily/stacks',
     'react-native-svg',
     'expo-linear-gradient',
+    '@backpackapp-io/react-native-toast',
   ],
 }
 
