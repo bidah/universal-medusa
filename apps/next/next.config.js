@@ -24,6 +24,7 @@ const nextConfig = {
     'react-native-svg',
     'expo-linear-gradient',
     '@backpackapp-io/react-native-toast',
+    'react-native-intersection-observer',
   ],
 }
 
