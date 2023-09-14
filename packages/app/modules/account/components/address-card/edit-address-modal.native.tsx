@@ -20,6 +20,7 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet'
 import { useCart, useRegions } from 'medusa-react'
+import RemoveAddressDialog from './remove-address-dialog'
 
 type FormValues = {
   first_name: string
@@ -49,6 +50,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
     bottomSheetRef.current?.present()
   }, [])
   const [submitting, setSubmitting] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
   const [error, setError] = useState<string | undefined>(undefined)
 
   const { regions } = useRegions()
@@ -122,6 +124,11 @@ const EditAddress: React.FC<EditAddressProps> = ({
 
   return (
     <>
+      <RemoveAddressDialog
+        setShowDialog={setShowDialog}
+        showDialog={showDialog}
+        removeAddress={removeAddress}
+      />
       <View
         className={clsx(
           'ios:mb-2 web:w-full flex min-h-[220px] flex-col justify-between border border-gray-200 p-5 transition-colors',
@@ -163,7 +170,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
           </Pressable>
           <Pressable
             className={`flex flex-row items-center gap-x-2 text-gray-700`}
-            onPress={removeAddress}
+            onPress={() => setShowDialog(true)}
           >
             <Trash />
             <Text className={` ${textSmallRegular} `}>Remove</Text>
