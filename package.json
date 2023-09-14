@@ -41,5 +41,8 @@
     "**/@gorhom/bottom-sheet",
     "**/@gorhom/bottom-sheet/**"
   ],
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "@backpackapp-io/react-native-toast": "^0.10.0"
+  }
 }

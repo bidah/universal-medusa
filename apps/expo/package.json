@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@backpackapp-io/react-native-toast": "^0.10.0",
     "@expo/vector-icons": "^13.0.0",
     "@gorhom/bottom-sheet": "^4.4.5",
     "@nandorojo/heroicons": "^0.0.4",
