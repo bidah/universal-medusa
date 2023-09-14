@@ -11,20 +11,23 @@ import { AccountProvider } from '../lib/context/account-context'
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <SafeArea>
-      <BottomSheetProvider>
+    <>
+      <SafeArea>
         <Medusa>
           <StacksProvider spacing={5} breakpoints={breakPointsAsArray}>
             <CartDropdownProvider>
               <Cart>
-                <StoreProvider>
-                  <AccountProvider>{children}</AccountProvider>
-                </StoreProvider>
+                <BottomSheetProvider>
+                  <StoreProvider>
+                    <AccountProvider>{children}</AccountProvider>
+                  </StoreProvider>
+                </BottomSheetProvider>
               </Cart>
             </CartDropdownProvider>
           </StacksProvider>
         </Medusa>
-      </BottomSheetProvider>
-    </SafeArea>
+        {/*<Toasts extraInsets={{ top: 40 }} />*/}
+      </SafeArea>
+    </>
   )
 }

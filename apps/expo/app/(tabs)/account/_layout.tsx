@@ -1,10 +1,13 @@
 import { Stack } from 'expo-router'
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 
 const AccountLayout = () => {
   return (
-    <Stack screenOptions={{ headerTintColor: 'black' }}>
-      <Stack.Screen name="index" options={{ headerTitle: 'Account' }} />
-    </Stack>
+    <BottomSheetModalProvider>
+      <Stack screenOptions={{ headerTintColor: 'black' }}>
+        <Stack.Screen name="index" options={{ headerTitle: 'Account' }} />
+      </Stack>
+    </BottomSheetModalProvider>
   )
 }
 

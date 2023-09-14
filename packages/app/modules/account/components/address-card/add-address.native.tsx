@@ -42,6 +42,8 @@ const AddAddressNative: React.FC = () => {
   const { refetchCustomer } = useAccount()
   const methods = useForm<FormValues>()
   const {
+    setValue,
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -194,10 +196,8 @@ const AddAddressNative: React.FC = () => {
                 errors={errors}
                 autoComplete="address-level1"
               />
-              {/*<CountrySelect*/}
-              {/*  {...register('country_code', { required: true })}*/}
-              {/*  autoComplete="country"*/}
-              {/*/>*/}
+
+              <CountrySelect setValue={setValue} control={control} />
               <Input
                 label="Phone"
                 {...register('phone')}

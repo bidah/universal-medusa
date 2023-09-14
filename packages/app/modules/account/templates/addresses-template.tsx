@@ -14,7 +14,7 @@ const AddressesTemplate = () => {
   }
 
   return (
-    <View className="w-full">
+    <View className="mb-28 w-full">
       <View className="mx-2 mb-8 flex flex-col gap-y-4">
         <Text className={`${text2xlSemi} ios:hidden`}>Shipping Addresses</Text>
         <Text className={`{$textBaseRegular} ios:pt-2`}>
