@@ -1,5 +1,4 @@
 import { ProductProvider } from 'app/lib/context/product-context'
-// import { useIntersection } from 'app/lib/hooks/use-in-view'
 import { Product } from '@medusajs/medusa'
 import ProductTabs from 'app/modules/products/components/product-tabs'
 import RelatedProducts from 'app/modules/products/components/related-products'
@@ -7,17 +6,12 @@ import ProductInfo from 'app/modules/products/templates/product-info'
 import React, { useRef } from 'react'
 import { View, Text, ScrollView, Stack } from '../../../design'
 import ImageGallery from '../components/image-gallary'
-// import MobileActions from '../components/mobile-actions'
 
 type ProductTemplateProps = {
   product: Product
 }
-
 const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
-  // const info = useRef<HTMLDivElement>(null)
   const info = useRef(null)
-
-  // const inView = useIntersection(info, '0px')
 
   return (
     <ProductProvider product={product}>
@@ -37,7 +31,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
       <View className="content-container small:px-8 small:my-32 ios:my-2 web:my-16 px-3">
         <RelatedProducts product={product} />
       </View>
-      {/*<MobileActions product={product} show={!inView} />*/}
     </ProductProvider>
   )
 }

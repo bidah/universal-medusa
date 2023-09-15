@@ -8,7 +8,7 @@ import { breakPointsAsArray } from 'app/design/tailwind/theme'
 import { MobileMenuProvider } from 'app/lib/context/mobile-menu-context'
 import { BottomSheetProvider } from './bottom-sheet'
 import { AccountProvider } from '../lib/context/account-context'
-// import { ToastsProvider } from './toasts'
+import { ToastsProvider } from './toasts'
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +27,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
             </CartDropdownProvider>
           </StacksProvider>
         </Medusa>
-        {/*<ToastsProvider extraInsets={{ top: 40 }} />*/}
+        <ToastsProvider extraInsets={{ top: 40 }} />
       </SafeArea>
     </>
   )
