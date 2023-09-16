@@ -97,18 +97,7 @@ async function downloadAndExtractExample(
   const tempFile = await downloadTar(
     `https://github.com/bidah/universal-medusa/archive/refs/tags/v0.3.0.tar.gz`
   )
-  // const tempFile = await downloadTar(
-  //     `https://codeload.github.com/bidah/universal-medusa/tar.gz/master`
-  // )
 
-  // const result = await pipeline(
-  //   got.stream('https://codeload.github.com/nandorojo/solito/tar.gz/master'),
-  //   tar.extract({ cwd: root, strip: 3 }, [
-  //     `solito-master/example-monorepos/${name}`,
-  //   ])
-  // )
-
-  // return result
   await tar.x({
     file: tempFile,
     cwd: root,
