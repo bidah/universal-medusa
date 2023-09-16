@@ -95,7 +95,7 @@ async function downloadAndExtractExample(
   }
 
   const tempFile = await downloadTar(
-    `https://github.com/bidah/universal-medusa/archive/refs/tags/v0.2.6.tar.gz`
+    `https://github.com/bidah/universal-medusa/archive/refs/tags/v0.3.0.tar.gz`
   )
   // const tempFile = await downloadTar(
   //     `https://codeload.github.com/bidah/universal-medusa/tar.gz/master`
