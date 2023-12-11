@@ -86,4 +86,8 @@ yarn medusa:seed
 yarn medusa
 ```
 
+## Support 
+Got questions about the project, need more comprehensive support, or want to move into production using Universal Medusa? Please reach out by [booking a meeting on my calendar](https://cal.com/rodrigo-figueroa-vmbwee/30min).
+
+
 
