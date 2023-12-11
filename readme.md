@@ -1,6 +1,6 @@
 # Universal Medusa ⚛️ Multi platform e-commerce development
 
-**Support:** Got questions about the project, need development support, or want to move into production using Universal Medusa? I'd love to offer you more comprehensive support. Please reach out to me by [booking a meeting on my calendar](https://cal.com/rodrigo-figueroa-vmbwee/30min).
+**Support:** Got questions about the project, need more comprehensive support, or want to move into production using Universal Medusa? Please reach out to me by [booking a meeting on my calendar](https://cal.com/rodrigo-figueroa-vmbwee/30min).
 
 --- 
 
