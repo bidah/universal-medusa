@@ -9,16 +9,4 @@ This enables you to start an ecommerce website and mobile app with rich, reliabl
 
 You get all the modules connected to the frontend and backend to get right out of the box a running ecommerce application.
 
-Screens integrate with Medusa:
-- Home
-- Product 
-- Products
-- Related Products
-- Store
-- Cart
-- Checkout
-- Login
-- Account
-
-
 Get to know all about it on [Medusajs.com](https://medusajs.com/)
