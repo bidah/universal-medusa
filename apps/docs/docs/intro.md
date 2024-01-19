@@ -6,7 +6,7 @@ slug: /
 # Universal ecommerce development
 
 :::info
-**Support:** Got questions about the project, need more comprehensive support, or want to move into production using Universal Medusa? Please reach out by [booking a meeting on my calendar](https://cal.com/rodrigo-figueroa-vmbwee/30min).
+**Support:** Got questions about the project, need more comprehensive support, or want to move into production using Universal Medusa? Please reach out by [booking a meeting](https://cal.com/rodrigo-figueroa-vmbwee/30min).
 :::
 
 Build cross platforms e com apps with [Medusa.js](http://medusajs.com) that gets you the best of web and native mobile using [Next.js](http://nextjs.org) and [Expo](https://expo.dev).
